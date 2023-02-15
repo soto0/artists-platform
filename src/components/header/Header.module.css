@@ -78,11 +78,17 @@ header {
 .profile {
     display: flex;
     gap: 15px;
+    position: relative;
     cursor: pointer;
     align-items: center;
     margin-left: auto;
 }
 
+.profile__top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 .profile__name {
     color: white;
     font-weight: 600;

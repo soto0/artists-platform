@@ -1,0 +1,132 @@
+.profile__top {
+    width: 100%;
+}
+
+.profile__large_icon {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    object-fit: cover;
+    z-index: 5;
+    filter: brightness(50%);
+    box-shadow: 0px 10px 10px rgb(20, 20, 20);
+}
+
+.profile__top_info {
+    z-index: 10;
+    position: absolute;
+    margin-top: 200px;
+    display: flex;
+    width: 64%;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.profile_small_icon {
+    width: 100px;
+    height: 100px;
+    background: rgb(0, 0, 0);
+    border-radius: 10%;
+    padding: 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgb(8, 8, 8) 0%, rgb(34, 34, 34)50%);
+}
+
+.profile_small_icon:hover + .change__small_icon {
+    opacity: 1;
+    z-index: 1;
+}
+
+.profile__top_info_name {
+    color: white;
+    font-weight: 600;
+    font-size: 40px;
+    text-transform: capitalize;
+}
+
+.profile__top_info_list {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.profile__top_info_item {
+    display: flex;
+    align-items: center;
+}
+
+.profile__top_info_item:after {
+    content: '|';
+    margin-left: 20px;
+    color: white;
+}
+
+.profile__top_info_item a {
+    color: white;
+    font-size: 30px;
+}
+
+.change__large_icon {
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgb(37, 37, 37);
+    background-color: #43EF60;
+    box-shadow: 0px 0px 10px #43EF60;
+    margin-left: auto;
+    height: 60px;
+    gap: 10px;
+    align-items: center;
+}
+
+.change__large_icon:hover {
+    color: rgb(37, 37, 37);
+}
+
+.change__large_icon_before {
+    width: 25px;
+}
+
+.change__small_icon {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    z-index: 20;
+    border-radius: 10%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: rgb(212, 212, 212);
+    transition: all 0.5s;
+    opacity: 0;
+    z-index: -1;
+}
+
+.change__small_icon:hover {
+    opacity: 1;
+    z-index: 1;
+}
+
+.change__small_icon p {
+    z-index: 15;
+    opacity: 1;
+    font-size: 23px;
+    margin-top: -5px;
+}
+.change__small_icon_back {
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+    background-color: black;
+    opacity: 0.4;
+    position: absolute;
+}
+
+.change__small_icon_after {
+    width: 60px;
+}

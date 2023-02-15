@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
+import ProfileTop from '../../components/Profile/ProfileTop/ProfileTop';
 
 const Profile: FC = () => {
     return (
-        <div>profile</div>
+        <main>
+            <ProfileTop />
+        </main>
     );
 };
 
