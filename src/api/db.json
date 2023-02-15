@@ -1,0 +1,53 @@
+{
+  "PopularArtists": [
+    {
+      "id": 0,
+      "name": "Макото Синкай",
+      "icon": "https://www.film.ru/sites/default/files/people/1568725-1103667.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Хаяо Миядзаки",
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Hayao_Miyazaki_cropped_1_Hayao_Miyazaki_201211.jpg/274px-Hayao_Miyazaki_cropped_1_Hayao_Miyazaki_201211.jpg"
+    },
+    {
+      "id": 2,
+      "name": "SAOWEE",
+      "icon": "https://avatars.dzeninfra.ru/get-zen_doc/1862846/pub_5e722b8e6a07f739edef418d_5e7231f207e55847223b7a6e/scale_1200"
+    },
+    {
+      "id": 3,
+      "name": "Рафаэль Лакост",
+      "icon": "https://cdn.igromania.ru/mnt/news/f/b/4/7/f/d/107017/html/more/d8abc442aeba6a8c8ced782e_560xH.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Ральф Маккуорри",
+      "icon": "https://cs9.pikabu.ru/post_img/big/2018/03/09/7/1520596755121953567.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Джама Джурабаев",
+      "icon": "https://cgevent.ru/wp-content/uploads/2020/10/jamaS.jpg"
+    },
+    {
+      "id": 6,
+      "name": "AOKAMEI",
+      "icon": "https://avatars.dzeninfra.ru/get-zen_doc/1107063/pub_5e722b8e6a07f739edef418d_5e7231617fd03e050f501a89/scale_1200"
+    }
+  ],
+  "Users": [
+    {
+      "login": "test",
+      "email": "test@test.com",
+      "password": "test0065",
+      "id": "test"
+    },
+    {
+      "login": "sotto0",
+      "email": "kaden0065@gmail.com",
+      "password": "sottomanS08",
+      "id": "sotto0"
+    }
+  ]
+}

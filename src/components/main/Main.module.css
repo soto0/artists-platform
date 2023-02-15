@@ -1,0 +1,137 @@
+.main {
+    padding-top: 150px;
+    display: flex;
+    overflow: hidden;
+}
+
+.main__left {
+    padding-top: 100px;
+}
+.title {
+    animation: toRight 1s;
+    max-width: 600px;
+}
+
+.text {
+    font-size: 30px;
+    color: white;
+    font-weight: 600;
+    max-width: 500px;
+    text-shadow: 0px 0px 10px rgb(37, 37, 37);
+    animation: toRight 1.2s;
+
+}
+
+.art {
+    height: 768px;
+    width: 760px;
+    margin-top: -100px;
+    animation: toUp 1.2s;
+}
+
+@keyframes toRight {
+    from {
+        transform: translate3d(-800px, 0, 0)
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@keyframes toLeft {
+    from {
+        transform: translate3d(800px, 0, 0)
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@keyframes toUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 800px, 0);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 1380px) {
+    .art {
+        width: 100%;
+        height: max-content;
+    }
+    .title {
+        font-size: 50px;
+    }
+    .text {
+        margin-top: 20px;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .art {
+        width: 580px;
+        height: 580px;
+    }
+    .main__left {
+        padding-top: 50px;
+    }
+    .title {
+        font-size: 45px;
+    }
+    .text {
+        font-size: 20px;
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 1124px) {
+    .art {
+        animation: toLeft 1.2s;
+    }
+    .main {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .main__left {
+        padding-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .art {
+        width: 100%;
+        height: max-content;
+    }
+    .title {
+        font-size: 30px;
+    }
+    .text {
+        font-size: 15px;
+        max-width: 300px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .title {
+        font-size: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

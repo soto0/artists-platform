@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+    font-family: 'Cuprum', sans-serif;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.App {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex: 1 1 auto;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgb(16, 22, 19) 80%);
+}
+
+h1 {
+    color: #43EF60;
+    font-weight: 600;
+    font-size: 80px;
+    width: max-content;
+    text-shadow: 0px 0px 25px #43EF60;
+}
+
+h2 {
+    color: #43EF60;
+    font-weight: 600;
+    font-size: 60px;
+    width: max-content;
+    text-shadow: 0px 0px 25px #43EF60;
+}
+
+.form__block {
+    border-radius: 20px;
+    padding: 50px 20px;
+    margin: auto;
+    margin: 150px auto;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgb(16, 22, 19) 80%);
+    width: 600px;
+    max-height: 720px;
+    box-shadow: 0px 0px 25px #16501f;
+}
+
+.title {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputs__block {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
+}
+
+input {
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 15px;
+    transition: all 0.5s;
+    background-color: rgb(29, 29, 29);
+    border: solid 2px #242424;
+    color: rgb(37, 37, 37);
+}
+.input:focus {
+    background-color: white;
+    border: solid 2px white;
+    box-shadow: 0px 0px 15px #43EF60;
+}
+
+.submit {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 80%;
+    border-radius: 20px;
+    border: none;
+    height: 72px;
+    outline: none;
+    padding: 20px 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 25px;
+    background-color: #43EF60;
+    box-shadow: 0px 0px 10px #43EF60;
+    color: rgb(37, 37, 37);
+    transition: all 0.3s;
+}
+
+.submit:hover {
+    font-size: 28px;
+    box-shadow: 0px 0px 15px #43EF60;
+}
+
+.error {
+    color: #43EF60;
+    font-weight: 600;
+    font-size: 20px;
+    width: max-content;
+    text-shadow: 0px 0px 5px #43EF60;
+}
+.unknow__error  {
+    color: #43EF60;
+    font-weight: 600;
+    font-size: 20px;
+    width: max-content;
+    text-shadow: 0px 0px 5px #43EF60;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 670px) {
+    .inputs__block {
+        width: 100%;
+    }
+    .form__block {
+        top: 40%;
+        width: 93%;
+    }
+    .submit {
+        margin-top: 50px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    .title {
+        font-size: 50px;
+    }
+}
