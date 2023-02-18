@@ -23,6 +23,7 @@
     background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgb(8, 8, 8)50%, rgba(0, 0, 0, 1) 100%);
     max-width: 400px;
     margin-top: 63px;
+    z-index: 100;
 }
 
 

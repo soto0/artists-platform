@@ -135,6 +135,10 @@ input {
     margin-right: auto;
 }
 
+.profile__main {
+    flex-direction: column;
+}
+
 @media screen and (max-width: 670px) {
     .inputs__block {
         width: 100%;

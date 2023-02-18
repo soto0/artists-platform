@@ -1,5 +1,6 @@
 .profile__top {
     width: 100%;
+    height: 350px;
 }
 
 .profile__large_icon {
@@ -24,10 +25,10 @@
 
 .profile_small_icon {
     width: 100px;
+    object-fit: cover;
     height: 100px;
     background: rgb(0, 0, 0);
     border-radius: 10%;
-    padding: 20px;
     cursor: pointer;
     background: linear-gradient(90deg, rgb(8, 8, 8) 0%, rgb(34, 34, 34)50%);
 }
@@ -129,4 +130,22 @@
 
 .change__small_icon_after {
     width: 60px;
+}
+
+.popup__back,
+.popup__back_active {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.popup__back_active {
+    display: flex;
+    z-index: 10;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    cursor: pointer;
+    z-index: 100;
+    height: 100%;
 }

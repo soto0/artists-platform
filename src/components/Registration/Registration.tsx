@@ -19,11 +19,15 @@ const Registration: FC = () => {
                 <div className={'form__block'}>
                     <h2 className={'title'}>Регистрация</h2>
                     <Formik initialValues={{ login: '', email: '', password: '' }}
-                            validationSchema={validationSchema}
-                            onSubmit={async (values) => {
-                                await axios.post('http://localhost:3001/Users', 
-                                    {id: values.login, login: values.login, email: values.email, password: values.password }).then(() => {
-                                    navigate('/Login')
+                        validationSchema={validationSchema}
+                        onSubmit={async (values) => {
+                            await axios.post('http://localhost:3001/Users',
+                                { id: values.login, login: values.login, email: values.email, password: values.password }).then(() => {
+                                    axios.post('http://localhost:3001/Profile/',
+                                        { id: values.login, login: values.login, largePhoto: '', avatar: '' },
+                                        { withCredentials: true });
+
+                                    navigate('/Login');
                                 }
                             );
                         }}
