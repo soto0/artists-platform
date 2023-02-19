@@ -1,0 +1,21 @@
+.profile__navigation {
+    padding-top: 17px;
+    background-color: rgb(27, 29, 32);
+}
+
+.profile__navigation_list {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.navigation__link {
+    color: rgb(155, 155, 155);
+    transition: all 0.2s;
+    padding-bottom: 17px;
+    height: 43px;
+}
+
+.navigation__link:hover {
+    color: white;
+}

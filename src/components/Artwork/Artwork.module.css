@@ -1,0 +1,89 @@
+.artwork {
+    position: relative;
+    max-width: 445px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.artwork:hover .artwork__down{
+    opacity: 1;
+    z-index: 10;
+}
+
+.artwork:hover .title {
+    opacity: 1;
+    z-index: 10;
+}
+
+.artwork:hover .artwork__icon {
+    filter: brightness(30%);
+}
+.artwork__icon {
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.title {
+    transition: all 0.5s;
+    position: absolute;
+    font-weight: 700;
+    color: white;
+    margin-left: 20px;
+    bottom: 0;
+    margin-bottom: 80px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.artwork__down {
+    transition: all 0.5s;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name {
+    color: white;
+    font-weight: 700;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: rgb(0, 0, 0);
+    border-radius: 10%;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgb(8, 8, 8) 0%, rgb(34, 34, 34)50%);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.down__right {
+    margin-right: 60px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.down__right p {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    gap: 5px;
+    color: white;
+}
+
+.icon {
+    width: 20px;
+    transition: all 0.2s;
+}

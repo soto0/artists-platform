@@ -1,0 +1,11 @@
+.artworks {
+    padding: 50px 0 100px 0;
+}
+
+.artworks__block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}

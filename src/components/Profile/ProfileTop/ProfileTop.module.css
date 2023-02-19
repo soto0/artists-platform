@@ -10,7 +10,6 @@
     object-fit: cover;
     z-index: 5;
     filter: brightness(50%);
-    box-shadow: 0px 10px 10px rgb(20, 20, 20);
 }
 
 .profile__top_info {
