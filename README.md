@@ -1,3 +1,13 @@
+# After cloning this repository!!!
+
+<b>
+enter this command in the console:
+ json-server --watch (path to db.json file) --port 3001 (and strictly on port 3001)
+ 
+ This is necessary in order for the fake Api server to work for you. And you've seen the data!
+<b>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
