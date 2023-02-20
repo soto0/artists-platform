@@ -1,10 +1,8 @@
-# After cloning this repository!!!
+# После клонирования репозитория!!!
 
 <b>
-enter this command in the console:
- json-server --watch (path to db.json file) --port 3001 (and strictly on port 3001)
- 
- This is necessary in order for the fake Api server to work for you. And you've seen the data!
+Ввести данную комадну в консоли:
+ json-server --watch (path to db.json file) --port 3001 (обязательно на порте 3001)
 <b>
 
 
