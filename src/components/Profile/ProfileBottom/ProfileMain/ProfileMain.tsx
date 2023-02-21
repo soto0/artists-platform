@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import s from './ProfileMain.module.css';
 import upload from './../../../../assets/images/upload.svg';
-import avatar from './../../../../assets/images/avatar.svg';
 import UploadJobPopup from './UploadJobPopup/UploadJobPopup';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import Artwork from '../../../Artwork/Artwork';
+import Comments from './Comments/Commets';
 
 const ProfileMain: FC = () => {
     const { Artworks, Avatar } = useTypedSelector(state => state.Profile);
@@ -14,6 +14,7 @@ const ProfileMain: FC = () => {
     let onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
     };
+
     return (
         <div className={s.wrapper}>
             <div className={s.main__top}>
@@ -30,7 +31,7 @@ const ProfileMain: FC = () => {
                                         )
                                     })
                                 }
-                           </div>
+                            </div>
                             :
                             <div className={s.upload__artworks}>
                                 <img src={upload} alt={'upload__artwork'} className={s.upload__artworks_icon} />
@@ -57,20 +58,7 @@ const ProfileMain: FC = () => {
             </div>
             <div className={s.main__bottom}>
                 <h3>Комментарии</h3>
-                <textarea name={'comments'} className={s.comments__text}></textarea>
-                <button className={s.submit__comment}>Отправить комментарий</button>
-                <div className={s.comments}>
-                    <div className={s.comment}>
-                        <img src={avatar} className={s.comment__avatar} />
-                        <div className={s.comment__body}>
-                            <div className={s.comment__top}>
-                                <p className={s.comment__name}>test</p>
-                                <p className={s.comment__date}>14 Ян. 15:03</p>
-                            </div>
-                            <div className={s.comment__text}>Привет первый тест комментарией</div>
-                        </div>
-                    </div>
-                </div>
+                <Comments userLogin={userLogin} Avatar={Avatar}  />
             </div>
             <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} />
             <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>

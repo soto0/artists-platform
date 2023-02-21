@@ -1,7 +1,8 @@
 export interface ProfileState {
     LargePhoto?: string,
     Avatar?: string,
-    Artworks?: []
+    Artworks?: [],
+    Comments?: []
 };
 
 export enum ProfileTypes {
@@ -12,6 +13,7 @@ interface getProfileData {
     type: ProfileTypes.GET_PROFILE_DATA;
     largePhoto?: string;
     avatar?: string;
-    artworks?: []
+    artworks?: [];
+    comments?: []
 };
 export type ProfileAction = getProfileData;
