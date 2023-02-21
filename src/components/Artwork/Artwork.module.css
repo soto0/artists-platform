@@ -64,7 +64,7 @@
     cursor: pointer;
     background: linear-gradient(90deg, rgb(8, 8, 8) 0%, rgb(34, 34, 34)50%);
     border-radius: 10px;
-    padding: 5px;
+    object-fit: cover;
 }
 
 .down__right {

@@ -17,4 +17,4 @@ export const useLoginActions = () => {
 export const useProfileAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(ProfileActionCreators, dispatch);
-}
+};

@@ -7,10 +7,10 @@ const ProfileArtWorks: FC = () => {
         <div className={s.artworks}>
             <h3>Работы</h3>
             <div className={s.artworks__block}>
+                {/* <Artwork />
                 <Artwork />
                 <Artwork />
-                <Artwork />
-                <Artwork />
+                <Artwork /> */}
             </div>
         </div>
     );

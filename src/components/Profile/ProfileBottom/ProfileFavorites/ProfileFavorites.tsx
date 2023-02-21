@@ -7,10 +7,10 @@ const ProfileFavorites: FC = () => {
         <div className={s.favorites}>
             <h3>Избранное</h3>
             <div className={s.favorites__block}>
+                {/* <Artwork />
                 <Artwork />
                 <Artwork />
-                <Artwork />
-                <Artwork />
+                <Artwork /> */}
             </div>
         </div>
     );
