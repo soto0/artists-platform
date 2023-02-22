@@ -4,13 +4,17 @@ const initialState: ProfileState = {
     LargePhoto: "",
     Avatar: "",
     Artworks: [],
-    Comments: []
+    Comments: [],
+    Countries: [],
+    Country: "",
 };
 
 export const ProfileReducer = (state = initialState, action: ProfileAction): ProfileState => {
     switch (action.type) {
         case ProfileTypes.GET_PROFILE_DATA:
-            return { LargePhoto: action.largePhoto, Avatar: action.avatar, Artworks: action.artworks, Comments: action.comments }
+            return { ...state,  LargePhoto: action.largePhoto, Avatar: action.avatar, Artworks: action.artworks, Comments: action.comments, Country: action.country }
+        case ProfileTypes.GET_COUNTRIES:
+            return { ...state, Countries: action.countries }
         default: 
             return state
     };

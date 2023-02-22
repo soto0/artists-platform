@@ -2,11 +2,14 @@ export interface ProfileState {
     LargePhoto?: string,
     Avatar?: string,
     Artworks?: [],
-    Comments?: []
+    Comments?: [],
+    Countries?: [],
+    Country?: string | undefined
 };
 
 export enum ProfileTypes {
     GET_PROFILE_DATA = 'GET_PROFILE_DATA',
+    GET_COUNTRIES = 'GET_COUNTRIES'
 };
 
 interface getProfileData {
@@ -14,6 +17,13 @@ interface getProfileData {
     largePhoto?: string;
     avatar?: string;
     artworks?: [];
-    comments?: []
+    comments?: [];
+    country?: string;
 };
-export type ProfileAction = getProfileData;
+
+interface getCountries {
+    type: ProfileTypes.GET_COUNTRIES;
+    countries?: []
+};
+
+export type ProfileAction = getProfileData | getCountries;

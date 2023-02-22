@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import * as yup from 'yup';
 import { useProfileAction } from '../../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';

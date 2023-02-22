@@ -6,8 +6,14 @@ import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useProfileAction } from '../../../../../hooks/useActions';
 
 interface CommentsProps {
-    userLogin: string | undefined
-    Avatar: string | undefined 
+    userLogin: string | undefined;
+    Avatar: string | undefined;
+}
+
+type Date = { 
+    weekday: any;
+    month: any;
+    day: any;
 }
 
 const Comments: FC<CommentsProps> = (props) => {
@@ -19,8 +25,14 @@ const Comments: FC<CommentsProps> = (props) => {
             <Formik
                 initialValues={{ comment: '' }}
                 onSubmit={async values => {
+                    const today = new Date();
+
+                    const options: Date = { weekday: "long", month: "long", day: "numeric" };
+
+                    const now = today.toLocaleString('ru-Ru', options);
+
                     await axios.post('http://localhost:3001/Comments',
-                        { commentText: values.comment, login: props.userLogin, avatar: props.Avatar},
+                        { commentText: values.comment, login: props.userLogin, avatar: props.Avatar, commentDate: now},
                         { withCredentials: true })
 
                     getProfileData(props.userLogin);
@@ -42,7 +54,7 @@ const Comments: FC<CommentsProps> = (props) => {
                                 <div className={s.comment__body}>
                                     <div className={s.comment__top}>
                                         <p className={s.comment__name}>{comment.login}</p>
-                                        <p className={s.comment__date}>14 Ян. 15:03</p>
+                                        <p className={s.comment__date}>{comment.commentDate}</p>
                                     </div>
                                     <div className={s.comment__text}>{comment.commentText}</div>
                                 </div>

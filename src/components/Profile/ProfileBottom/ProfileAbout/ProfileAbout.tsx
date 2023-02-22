@@ -1,9 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import s from './ProfileAbout.module.css';
 import avatar from './../../../../assets/images/avatar.svg';
 import { Link } from 'react-router-dom';
+import { useProfileAction } from '../../../../hooks/useActions';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import axios from 'axios';
 
 const ProfileAbout: FC = () => {
+    const [countries, setCountries] = useState<any>();
+    const [ countrySelectorActive, setCountrySelectorActive ] = useState(true);
+    const { Countries, Avatar, LargePhoto, Country} = useTypedSelector(state => state.Profile);
+    const { userLogin } = useTypedSelector(state => state.Login);
+    const { getCountries, getProfileData } = useProfileAction();
+
+    const onClickCountries = () => {
+        setCountrySelectorActive(!countrySelectorActive);
+        setCountries(Countries);
+    };
+
+    useEffect(() => {
+        getCountries();
+    }, []);
+
+    const onClickCountry = async (event: any) => {
+        await axios.put('http://localhost:3001/Profile/' + userLogin,
+            { id: userLogin,  login: userLogin, avatar: Avatar, largePhoto: LargePhoto, country: event.currentTarget.innerText },
+            { withCredentials: true }
+        );
+        setCountrySelectorActive(!countrySelectorActive);
+        getProfileData(userLogin);
+    };
+
     return (
         <div className={s.wrapper}>
             <div className={s.info__left}>
@@ -21,7 +48,17 @@ const ProfileAbout: FC = () => {
                         <p className={s.user__category}>Профессионал</p>
                     </div>
                     <div className={s.user__info}>
-                        <p className={s.address}>Россия</p>
+                        <p className={s.address} onClick={onClickCountries}>{Country ? Country : 'Не выбран'}</p>
+                        <div className={countrySelectorActive ? s.address__selector : s.address__selector_active}>
+                            {
+                                countries === undefined ? undefined :
+                                countries?.map((country: any) => {
+                                    return (
+                                        <p className={s.country} onClick={onClickCountry}>{country.name}</p>
+                                    )
+                                })
+                            }
+                        </div>
                         <p className={s.gender}>Мужчина</p>
                     </div>
                     <div className={s.user__bio}>
