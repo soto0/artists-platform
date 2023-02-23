@@ -4,32 +4,19 @@ import avatar from './../../../../assets/images/avatar.svg';
 import { Link } from 'react-router-dom';
 import { useProfileAction } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import axios from 'axios';
+import CountrySelector from './CountrySelector/CountrySelector';
+import GenderSelector from './GenderSelector/GenderSelector';
+import Bio from './Bio/Bio';
 
 const ProfileAbout: FC = () => {
-    const [countries, setCountries] = useState<any>();
     const [ countrySelectorActive, setCountrySelectorActive ] = useState(true);
-    const { Countries, Avatar, LargePhoto, Country} = useTypedSelector(state => state.Profile);
+    const [ genderSelectorActive, setGenderSelectorActive ] = useState(true);
     const { userLogin } = useTypedSelector(state => state.Login);
-    const { getCountries, getProfileData } = useProfileAction();
-
-    const onClickCountries = () => {
-        setCountrySelectorActive(!countrySelectorActive);
-        setCountries(Countries);
-    };
+    const { getCountries } = useProfileAction();
 
     useEffect(() => {
         getCountries();
     }, []);
-
-    const onClickCountry = async (event: any) => {
-        await axios.put('http://localhost:3001/Profile/' + userLogin,
-            { id: userLogin,  login: userLogin, avatar: Avatar, largePhoto: LargePhoto, country: event.currentTarget.innerText },
-            { withCredentials: true }
-        );
-        setCountrySelectorActive(!countrySelectorActive);
-        getProfileData(userLogin);
-    };
 
     return (
         <div className={s.wrapper}>
@@ -41,29 +28,29 @@ const ProfileAbout: FC = () => {
             </div>
             <div className={s.info__right}>
                 <div id={'about'} className={s.about__info}>
-                    <p className={s.name}>Test</p>
+                    <p className={s.name}>{userLogin}</p>
                     <div className={s.user__categories}>
                         <p className={s.user__category}>Художник</p>
                         <p className={s.user__category}>Смотрящий</p>
                         <p className={s.user__category}>Профессионал</p>
                     </div>
                     <div className={s.user__info}>
-                        <p className={s.address} onClick={onClickCountries}>{Country ? Country : 'Не выбран'}</p>
-                        <div className={countrySelectorActive ? s.address__selector : s.address__selector_active}>
-                            {
-                                countries === undefined ? undefined :
-                                countries?.map((country: any) => {
-                                    return (
-                                        <p className={s.country} onClick={onClickCountry}>{country.name}</p>
-                                    )
-                                })
-                            }
-                        </div>
-                        <p className={s.gender}>Мужчина</p>
+                        <CountrySelector 
+                            countrySelectorActive={countrySelectorActive} 
+                            setCountrySelectorActive={setCountrySelectorActive} 
+                            setGenderSelectorActive={setGenderSelectorActive} 
+                            genderSelectorActive={genderSelectorActive} 
+                        />
+                        <GenderSelector 
+                            genderSelectorActive={genderSelectorActive} 
+                            countrySelectorActive={countrySelectorActive} 
+                            setGenderSelectorActive={setGenderSelectorActive} 
+                            setCountrySelectorActive={setCountrySelectorActive} 
+                        />
                     </div>
                     <div className={s.user__bio}>
                         <h4 className={s.title}>Биография</h4>
-                        <p className={s.bio}>Начинающий фронтенд разработчик данного сайта! И немного художник.</p>
+                        <Bio />
                     </div>
                 </div>
                 <div id={'statistics'} className={s.statistics}>

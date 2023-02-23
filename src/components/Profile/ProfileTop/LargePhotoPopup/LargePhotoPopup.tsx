@@ -1,17 +1,10 @@
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import React, { FC, useState } from 'react';
+import { PopupProps } from '../../../../types/Profile';
 import upload from './../../../../assets/images/upload.svg';
 
-interface LargePhotoPopupProps {
-    popupActive: boolean;
-    setPopupActive: any;
-    userLogin: string | undefined;
-    Avatar: string | undefined;
-    getProfileData: any;
-};
-
-const LargePhotoPopup: FC<LargePhotoPopupProps> = (props) => {
+const LargePhotoPopup: FC<PopupProps> = (props) => {
     const [largeImage, setLargeImage] = useState<any>();
     const [imageUrl, setImageUrl] = useState<any>();
 
@@ -35,7 +28,7 @@ const LargePhotoPopup: FC<LargePhotoPopupProps> = (props) => {
                 onSubmit={async values => {
                     if (imageUrl) {
                         await axios.put('http://localhost:3001/Profile/' + props.userLogin,
-                            { id: props.userLogin, login: props.userLogin, largePhoto: imageUrl, avatar: props.Avatar },
+                            { id: props.userLogin, login: props.userLogin, largePhoto: imageUrl, avatar: props.Avatar, country: props.Country, gender: props.Gender },
                             { withCredentials: true });
                     };
 

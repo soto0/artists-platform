@@ -15,7 +15,7 @@ const ProfileTop: FC = () => {
     const [popupActive, setPopupActive] = useState(true);
     const { getProfileData } = useProfileAction();
     const { userLogin, isAuth } = useTypedSelector(state => state.Login);
-    const { LargePhoto, Avatar } = useTypedSelector(state => state.Profile);
+    const { LargePhoto, Avatar, Country, Gender } = useTypedSelector(state => state.Profile);
 
     let onClickPopup = () => {
         setPopupActive(!popupActive);
@@ -65,7 +65,9 @@ const ProfileTop: FC = () => {
                 getProfileData={getProfileData} 
                 Avatar={Avatar} 
                 userLogin={userLogin} 
-                setPopupActive={setPopupActive} 
+                setPopupActive={setPopupActive}
+                Country={Country}
+                Gender={Gender}
             />
             <AvatarPopup 
                 popupActive={popupActive} 
@@ -73,6 +75,8 @@ const ProfileTop: FC = () => {
                 getProfileData={getProfileData} 
                 userLogin={userLogin} 
                 setPopupActive={setPopupActive} 
+                Country={Country}
+                Gender={Gender}
             />
         </div>
     );

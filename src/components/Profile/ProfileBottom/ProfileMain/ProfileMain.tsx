@@ -7,7 +7,7 @@ import Artwork from '../../../Artwork/Artwork';
 import Comments from './Comments/Commets';
 
 const ProfileMain: FC = () => {
-    const { Artworks, Avatar } = useTypedSelector(state => state.Profile);
+    const { Artworks, Avatar, Country, Gender, Bio } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
 
@@ -45,13 +45,13 @@ const ProfileMain: FC = () => {
                     <div className={s.about__block}>
                         <div className={s.about__block_top}>
                             <div className={s.about__block_info}>
-                                <p className={s.address}>Россия</p>
-                                <p className={s.gender}>Мужчина</p>
+                                <p className={s.address}>{Country}</p>
+                                <p className={s.gender}>{Gender}</p>
                             </div>
                         </div>
                         <div className={s.about__block__bio}>
                             <h4 className={s.title}>Биография</h4>
-                            <p className={s.bio}>Начинающий фронтенд разработчик данного сайта! И немного художник.</p>
+                            <p className={s.bio}>{Bio}</p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,35 @@
+.bio {
+    margin-top: 20px;
+}
+
+.bio__textarea {
+    width: 100%;
+    border-radius: 20px;
+    resize: none;
+    height: 200px;
+    padding: 20px;
+    color: white;
+    border: solid 1px rgb(71, 71, 71);
+    background-color: rgb(21, 26, 21);
+    outline: none;
+}
+
+.submit__bio {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px;
+    margin-left: auto;
+    border-radius: 10px;
+    font-weight: 600;
+    color: rgb(37, 37, 37);
+    background-color: #43EF60;
+    height: 50px;
+    gap: 10px;
+    align-items: center;
+}
+
+.submit__bio:hover {
+    color: rgb(37, 37, 37);
+}

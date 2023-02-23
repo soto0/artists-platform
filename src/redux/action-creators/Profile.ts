@@ -7,7 +7,7 @@ export const getProfileData = (userLogin: any) => {
         const response = await axios.get('http://localhost:3001/Profile/' + userLogin);
         const responseArtworks = await axios.get('http://localhost:3001/Artworks?login=' + userLogin);
         const responseComments = await axios.get('http://localhost:3001/Comments');
-        dispatch({ type: ProfileTypes.GET_PROFILE_DATA, largePhoto: response.data.largePhoto, avatar: response.data.avatar, country: response.data.country, artworks: responseArtworks.data, comments: responseComments.data });
+        dispatch({ type: ProfileTypes.GET_PROFILE_DATA, largePhoto: response.data.largePhoto, avatar: response.data.avatar, country: response.data.country, gender: response.data.gender, bio: response.data.bio, artworks: responseArtworks.data, comments: responseComments.data });
     };
     
 };

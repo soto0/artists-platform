@@ -144,32 +144,36 @@
 .address {
     cursor: pointer;
 }
-.address__selector,
-.address__selector_active {
+
+.gender {
+    cursor: pointer;
+}
+.selector,
+.selector_active {
     display: none;
     position: absolute;
-    margin-top: 30px;
+    margin-top: 5px;
     width: 150px;
     height: 150px;
     background-color: rgb(27, 29, 32);
     overflow-y: scroll;
 }
 
-.address__selector_active {
+.selector_active {
     display: block;
 }
 
-.address__selector::-webkit-scrollbar,
-.address__selector_active::-webkit-scrollbar {
+.selector::-webkit-scrollbar,
+.selector_active::-webkit-scrollbar {
   display: none;
 }
 
-.country {
+.option {
     padding: 5px;
     transition: all 0.3s;
     cursor: pointer;
 }
 
-.country:hover {
+.option:hover {
     background-color: #43EF60;
 }

@@ -4,7 +4,9 @@ export interface ProfileState {
     Artworks?: [],
     Comments?: [],
     Countries?: [],
-    Country?: string | undefined
+    Country?: string | undefined,
+    Gender?: string | undefined,
+    Bio?: string | undefined
 };
 
 export enum ProfileTypes {
@@ -19,6 +21,8 @@ interface getProfileData {
     artworks?: [];
     comments?: [];
     country?: string;
+    gender?: string;
+    bio?: string
 };
 
 interface getCountries {
@@ -27,3 +31,14 @@ interface getCountries {
 };
 
 export type ProfileAction = getProfileData | getCountries;
+
+export interface PopupProps {
+    popupActive: boolean;
+    setPopupActive: any;
+    LargePhoto?: string | undefined;
+    userLogin: string | undefined;
+    Avatar?: string | undefined;
+    getProfileData: any;
+    Country: string | undefined;
+    Gender: string | undefined;
+};
