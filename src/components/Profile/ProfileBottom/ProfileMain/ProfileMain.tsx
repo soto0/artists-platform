@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import s from './ProfileMain.module.css';
 import upload from './../../../../assets/images/upload.svg';
-import UploadJobPopup from './UploadJobPopup/UploadJobPopup';
+import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import Artwork from '../../../Artwork/Artwork';
 import Comments from './Comments/Commets';
@@ -60,7 +60,7 @@ const ProfileMain: FC = () => {
                 <h3>Комментарии</h3>
                 <Comments userLogin={userLogin} Avatar={Avatar}  />
             </div>
-            <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} />
+            <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} setArtworkPopupActive={setArtworkPopupActive} />
             <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>
         </div>
     );

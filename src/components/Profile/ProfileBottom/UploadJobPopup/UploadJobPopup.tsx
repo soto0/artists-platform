@@ -2,13 +2,14 @@ import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import React, { FC, useState } from 'react';
 import * as yup from 'yup';
-import { useProfileAction } from '../../../../../hooks/useActions';
-import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
-import upload from './../../../../../assets/images/upload.svg';
+import { useProfileAction } from '../../../../hooks/useActions';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import upload from './../../../../assets/images/upload.svg';
 
 
 interface UploadJobPopupProps {
-    ArtworkPopupActive: boolean
+    ArtworkPopupActive: boolean;
+    setArtworkPopupActive: any;
 }
 
 const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
@@ -47,6 +48,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                     };
 
                     getProfileData(userLogin);
+                    props.setArtworkPopupActive(true);
                 }}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid }) => (

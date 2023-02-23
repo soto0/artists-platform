@@ -2,6 +2,29 @@
     padding: 50px 0 100px 0;
 }
 
+.artworks__top {
+    display: flex;
+}
+
+.add__artwork {
+    display: block;
+    cursor: pointer;
+    display: flex;
+    padding: 10px 20px;
+    margin-left: auto;
+    border-radius: 10px;
+    font-weight: 600;
+    color: rgb(37, 37, 37);
+    background-color: #43EF60;
+    height: 50px;
+    gap: 10px;
+    align-items: center;
+}
+
+.add__artwork:hover {
+    color: rgb(37, 37, 37);
+}
+
 .artworks__block {
     display: flex;
     flex-direction: row;
