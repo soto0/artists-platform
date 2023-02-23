@@ -29,7 +29,7 @@ const AvatarPopup: FC<PopupProps> = (props) => {
                 onSubmit={async values => {
                     if (avatarUrl) {
                         await axios.put('http://localhost:3001/Profile/' + props.userLogin,
-                            { id: props.userLogin, login: props.userLogin, largePhoto: props.LargePhoto, avatar: avatarUrl, country: props.Country, gender: props.Gender },
+                            { id: props.userLogin, login: props.userLogin, largePhoto: props.LargePhoto, avatar: avatarUrl, country: props.Country, gender: props.Gender, bio: props.Bio },
                             { withCredentials: true });
                     };
 

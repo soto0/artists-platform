@@ -41,4 +41,5 @@ export interface PopupProps {
     getProfileData: any;
     Country: string | undefined;
     Gender: string | undefined;
+    Bio: string | undefined
 };
