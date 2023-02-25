@@ -7,7 +7,7 @@ import Artwork from '../../../Artwork/Artwork';
 import Comments from './Comments/Commets';
 
 const ProfileMain: FC = () => {
-    const { Artworks, Avatar, Country, Gender, Bio } = useTypedSelector(state => state.Profile);
+    const { Artworks, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
 
@@ -58,7 +58,7 @@ const ProfileMain: FC = () => {
             </div>
             <div className={s.main__bottom}>
                 <h3>Комментарии</h3>
-                <Comments userLogin={userLogin} Avatar={Avatar}  />
+                <Comments userLogin={userLogin} Avatar={Avatar} Login={Login} />
             </div>
             <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} setArtworkPopupActive={setArtworkPopupActive} />
             <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>

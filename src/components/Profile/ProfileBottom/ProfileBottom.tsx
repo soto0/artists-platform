@@ -6,11 +6,12 @@ import s from './ProfileBottom.module.css';
 
 const ProfileBottom: FC = () => {
     const { userLogin } = useTypedSelector(state => state.Login);
+    const { Login } = useTypedSelector(state => state.Profile);
     const { getArtworks, getComments, getPosts } = useProfileAction();
 
     useEffect(() => {
         getArtworks(userLogin);
-        getComments();
+        getComments(Login);
         getPosts(userLogin);
     }, []);
 

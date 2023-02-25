@@ -5,6 +5,7 @@ import * as LoginActionCreators from './../redux/action-creators/Login';
 import * as ProfileActionCreators from './../redux/action-creators/Profile';
 import * as UsersActionCreators from './../redux/action-creators/Users';
 import * as CategoriesActionCreators from './../redux/action-creators/Categories';
+import * as NewActionCreators from './../redux/action-creators/New';
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -30,3 +31,8 @@ export const useCategoriesAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(CategoriesActionCreators, dispatch);
 };
+
+export const useNewAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(NewActionCreators, dispatch);
+}

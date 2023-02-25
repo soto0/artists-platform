@@ -3,6 +3,7 @@ import s from './Artwork.module.css';
 import { Link } from 'react-router-dom';
 import favorite from './../../assets/images/favorite.svg';
 import like from './../../assets/images/like.svg';
+import avatar from './../../assets/images/avatar.svg';
 
 interface ArtworkProps {
     name: string | undefined,
@@ -17,7 +18,7 @@ const Artwork: FC<ArtworkProps> = (props) => {
             <img src={props.artworkImage} alt={'artwork'} className={s.artwork__icon} />
             <p className={s.title}>{props.artworkName}</p>
             <div className={s.artwork__down}>
-                <img src={props.avatar} alt={'avatar'} className={s.avatar} />
+                <img src={props.avatar ? props.avatar : avatar} alt={'avatar'} className={s.avatar} />
                 <p className={s.name}>{props.name}</p>
                 <div className={s.down__right}>
                     <p className={s.likes}>

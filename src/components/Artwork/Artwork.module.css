@@ -1,8 +1,7 @@
 .artwork {
     position: relative;
-    max-width: 445px;
-    height: 250px;
-    object-fit: cover;
+    width: 445px;
+    height: 300px;
 }
 
 .artwork:hover .artwork__down{
@@ -22,6 +21,8 @@
     width: 100%;
     height: 100%;
     transition: all 0.5s;
+    object-fit: cover;
+    object-position: 50% 10%;
 }
 
 .title {
@@ -39,7 +40,7 @@
 .artwork__down {
     transition: all 0.5s;
     bottom: 0;
-    width: 100%;
+    width: 95%;
     opacity: 0;
     position: absolute;
     z-index: -1;
@@ -69,7 +70,7 @@
 }
 
 .down__right {
-    margin-right: 60px;
+    margin-right: 40px;
     margin-left: auto;
     display: flex;
     flex-direction: column;

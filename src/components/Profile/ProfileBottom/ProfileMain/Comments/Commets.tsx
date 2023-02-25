@@ -8,6 +8,7 @@ import { useProfileAction } from '../../../../../hooks/useActions';
 interface CommentsProps {
     userLogin: string | undefined;
     Avatar: string | undefined;
+    Login: string | undefined;
 }
 
 type Date = { 
@@ -32,7 +33,7 @@ const Comments: FC<CommentsProps> = (props) => {
                     const now = today.toLocaleString('ru-Ru', options);
 
                     await axios.post('http://localhost:3001/Comments',
-                        { commentText: values.comment, login: props.userLogin, avatar: props.Avatar, commentDate: now},
+                        { commentText: values.comment, login: props.Login, avatar: props.Avatar, commentDate: now},
                         { withCredentials: true })
 
                     getProfileData(props.userLogin);

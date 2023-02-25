@@ -46,7 +46,7 @@ const Header: FC = () => {
                                 <Link to={'/Users'} className={s.navigation__link}>Пользователи</Link>
                             </li>
                             <li className={s.navigation__item}>
-                                <Link to={''} className={s.navigation__link}>Избранное</Link>
+                                <Link to={'/New'} className={s.navigation__link}>Новое</Link>
                             </li>
                         </ul>
                     </nav>

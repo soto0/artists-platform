@@ -10,6 +10,7 @@ import ProfilePosts from './components/Profile/ProfileBottom/ProfilePosts/Profil
 import CategoriesPage from './pages/Categories/Categories';
 import LoginPage from './pages/Login/Login';
 import MainPage from './pages/MainPage/MainPage';
+import NewPage from './pages/New/New';
 import Profile from './pages/Profile/Profile';
 import RegistrationPage from './pages/Registration/Registration';
 import UsersPage from './pages/Users/Users';
@@ -32,6 +33,7 @@ const App = () => {
           </Route>
           <Route path={'/Users'} element={<UsersPage />}></Route>
           <Route path={'/Categories'} element={<CategoriesPage />}></Route>
+          <Route path={'/New'} element={<NewPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

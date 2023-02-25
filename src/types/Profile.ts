@@ -7,7 +7,8 @@ export interface ProfileState {
     Country: string | undefined,
     Gender: string | undefined,
     Bio: string | undefined,
-    Posts: []
+    Posts: [],
+    Login: string | undefined
 };
 
 export enum ProfileTypes {
@@ -24,7 +25,8 @@ interface getProfileData {
     avatar: string;
     country: string;
     gender: string;
-    bio: string
+    bio: string;
+    login: string
 };
 
 interface getArtworks {
@@ -58,5 +60,6 @@ export interface PopupProps {
     getProfileData: any;
     Country: string | undefined;
     Gender: string | undefined;
-    Bio: string | undefined
+    Bio: string | undefined;
+    login?: string | undefined;
 };
