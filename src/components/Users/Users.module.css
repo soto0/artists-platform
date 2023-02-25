@@ -1,0 +1,12 @@
+.title {
+    margin-top: 50px
+}
+
+.users__block {
+    display: flex;
+    flex-direction: row;
+    gap: 16.5px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}

@@ -80,3 +80,14 @@
     font-size: 18px;
     font-weight: 300;
 }
+
+@media screen and (max-width: 435px) {
+    .comment__top {
+        gap: 5px;
+        align-items: end;
+    }
+    .comment__top .comment__date {
+        font-size: 15px;
+        margin-right: 0;
+    }
+}

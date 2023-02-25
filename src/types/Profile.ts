@@ -6,14 +6,16 @@ export interface ProfileState {
     Countries: [] | undefined,
     Country: string | undefined,
     Gender: string | undefined,
-    Bio: string | undefined
+    Bio: string | undefined,
+    Posts: []
 };
 
 export enum ProfileTypes {
     GET_PROFILE_DATA = 'GET_PROFILE_DATA',
     GET_ARTWORKS = 'GET_ARTWORKS',
     GET_COMMENTS = 'GET_COMMENTS',
-    GET_COUNTRIES = 'GET_COUNTRIES'
+    GET_COUNTRIES = 'GET_COUNTRIES',
+    GET_POSTS = 'GET_POSTS'
 };
 
 interface getProfileData {
@@ -40,7 +42,12 @@ interface getCountries {
     countries: [];
 };
 
-export type ProfileAction = getProfileData | getArtworks | getComments | getCountries;
+interface getPosts {
+    type: ProfileTypes.GET_POSTS;
+    posts: [];
+}
+
+export type ProfileAction = getProfileData | getArtworks | getComments | getCountries | getPosts;
 
 export interface PopupProps {
     popupActive: boolean;

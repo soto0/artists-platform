@@ -12,12 +12,16 @@
     filter: brightness(50%);
 }
 
+.profile__top div {
+    position: relative;
+}
+
 .profile__top_info {
     z-index: 10;
     position: absolute;
     margin-top: 200px;
     display: flex;
-    width: 64%;
+    width: 100%;
     gap: 20px;
     align-items: flex-end;
 }
@@ -61,7 +65,8 @@
     color: white;
 }
 
-.profile__top_info_item a {
+.profile__top_info_item a,
+.profile__top_info_item span  {
     color: white;
     font-size: 30px;
 }
@@ -147,4 +152,38 @@
     cursor: pointer;
     z-index: 100;
     height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+    .profile__top_info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .change__large_icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .profile__top_info_item a {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .change__large_icon {
+        font-size: 18px;
+        padding: 5px 20px;
+        height: 40px;
+    }
+    .profile__top_info_item:after {
+        content: none;
+    }
+    .profile__top_info_item a {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }

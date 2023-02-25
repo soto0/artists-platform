@@ -48,6 +48,36 @@
       "email": "kaden0065@gmail.com",
       "password": "sottomanS08",
       "id": "sotto0"
+    },
+    {
+      "id": "dasha",
+      "login": "dasha",
+      "email": "f@f",
+      "password": "sotto00"
+    },
+    {
+      "id": "test2",
+      "login": "test2",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test3",
+      "login": "test3",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test4",
+      "login": "test4",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test5",
+      "login": "test5",
+      "largePhoto": "",
+      "avatar": ""
     }
   ],
   "Profile": [
@@ -66,6 +96,36 @@
       "country": "",
       "avatar": "",
       "largePhoto": ""
+    },
+    {
+      "id": "dasha",
+      "login": "dasha",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test2",
+      "login": "test2",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test3",
+      "login": "test3",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test4",
+      "login": "test4",
+      "largePhoto": "",
+      "avatar": ""
+    },
+    {
+      "id": "test5",
+      "login": "test5",
+      "largePhoto": "",
+      "avatar": ""
     }
   ],
   "Artworks": [
@@ -915,6 +975,15 @@
     {
       "code": "JP",
       "name": "Япония"
+    }
+  ],
+  "Posts": [
+    {
+      "postTitle": "Тестовый пост",
+      "login": "test",
+      "postDate": "четверг, 23 февраля",
+      "postText": "Тетсовый пост",
+      "id": 1
     }
   ]
 }

@@ -11,6 +11,7 @@ import LoginPage from './pages/Login/Login';
 import MainPage from './pages/MainPage/MainPage';
 import Profile from './pages/Profile/Profile';
 import RegistrationPage from './pages/Registration/Registration';
+import UsersPage from './pages/Users/Users';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path={'ArtWorks'} element={<ProfileArtWorks />} ></Route>
             <Route path={'Posts'} element={<ProfilePosts />} ></Route>
           </Route>
+          <Route path={'/Users'} element={<UsersPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -10,6 +10,7 @@ const Header: FC = () => {
     const [menuActive, setMenuActive] = useState(true);
     const [profileMenuActive, setProfileMenuActive] = useState(true);
     const { isAuth, userLogin } = useTypedSelector(state => state.Login);
+    const { Avatar } = useTypedSelector(state => state.Profile);
 
     let onClickBurger = () => {
         setMenuActive(!menuActive);
@@ -42,7 +43,7 @@ const Header: FC = () => {
                                 <Link to={''} className={s.navigation__link}>Категории</Link>
                             </li>
                             <li className={s.navigation__item}>
-                                <Link to={''} className={s.navigation__link}>Подписки</Link>
+                                <Link to={'/Users'} className={s.navigation__link}>Пользователи</Link>
                             </li>
                             <li className={s.navigation__item}>
                                 <Link to={''} className={s.navigation__link}>Избранное</Link>
@@ -54,7 +55,7 @@ const Header: FC = () => {
                             <div className={s.profile}>
                                 <div className={s.profile__top} onClick={onClickProfile}>
                                     <p className={s.profile__name}>{userLogin}</p>
-                                    <img src={avatar} alt={'avatar-icon'} className={s.profile__icon} />
+                                    <img src={Avatar ? Avatar : avatar} alt={'avatar-icon'} className={s.profile__icon} />
                                 </div>
                                 <ProfileMenu profileMenuActive={profileMenuActive} userLogin={userLogin} />
                             </div> :

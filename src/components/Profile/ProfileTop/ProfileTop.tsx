@@ -5,13 +5,12 @@ import changeIcon from './../../../assets/images/change_icon.svg';
 import profileLargeIcon from './../../../assets/images/profileLarge.jpg';
 import changeSmallIcon from './../../../assets/images/change_small_icon.svg';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LargePhotoPopup from './LargePhotoPopup/LargePhotoPopup';
 import { useProfileAction } from '../../../hooks/useActions';
 import AvatarPopup from './AvatarPopup/AvatarPopup';
 
 const ProfileTop: FC = () => {
-    const navigate = useNavigate();
     const [popupActive, setPopupActive] = useState(true);
     const { getProfileData } = useProfileAction();
     const { userLogin, isAuth } = useTypedSelector(state => state.Login);
@@ -22,10 +21,6 @@ const ProfileTop: FC = () => {
     };
 
     useEffect(() => {
-        if (isAuth === false) {
-            navigate('/Login/' + userLogin);
-        };
-
         getProfileData(userLogin);
     }, []);
 
@@ -35,22 +30,22 @@ const ProfileTop: FC = () => {
             <div className={'container'}>
                 <div className={s.profile__top_info}>
                     <img src={Avatar === '' ? avatar : Avatar} alt={'profile_small_icon'} className={s.profile_small_icon} />
-                    <div className={s.change__small_icon} onClick={onClickPopup}>
+                    <span className={s.change__small_icon} onClick={onClickPopup}>
                         <img src={changeSmallIcon} alt={'change_small_icon'} className={s.change__small_icon_after} />
                         <p>изменить</p>
                         <div className={s.change__small_icon_back}></div>
-                    </div>
+                    </span>
                     <div className={s.profile__top_info_text}>
                         <p className={s.profile__top_info_name}>{userLogin}</p>
                         <ul className={s.profile__top_info_list}>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Подписчики 0</Link>
+                                <Link to=''>Подписчики <span>0</span></Link>
                             </li>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Сообщества 0</Link>
+                                <Link to=''>Сообщества <span>0</span></Link>
                             </li>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Избранное 0</Link>
+                                <Link to=''>Избранное <span>0</span></Link>
                             </li>
                         </ul>
                     </div>

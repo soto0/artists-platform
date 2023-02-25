@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as UserActionCreators from './../redux/action-creators/popularArtist';
 import * as LoginActionCreators from './../redux/action-creators/Login';
 import * as ProfileActionCreators from './../redux/action-creators/Profile';
+import * as UsersActionCreators from './../redux/action-creators/Users';
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -17,4 +18,9 @@ export const useLoginActions = () => {
 export const useProfileAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(ProfileActionCreators, dispatch);
+};
+
+export const useUsersAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(UsersActionCreators, dispatch);
 };

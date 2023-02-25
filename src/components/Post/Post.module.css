@@ -86,7 +86,7 @@
     border-radius: 10%;
     background: linear-gradient(90deg, rgb(8, 8, 8) 0%, rgb(34, 34, 34)50%);
     border-radius: 10px;
-    padding: 5px;
+    object-fit: cover;
 }
 
 .post {
@@ -140,4 +140,18 @@
     font-weight: 300;
     margin-top: 20px;
     width: 100%;
+}
+
+@media screen and (max-width: 430px) {
+    .date {
+        font-size: 15px;
+    }
+    .post__title {
+        font-size: 35px;
+    }
+    .submit__comment {
+        font-size: 18px;
+        width: 100%;
+        justify-content: center;
+    }
 }

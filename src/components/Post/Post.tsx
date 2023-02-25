@@ -2,20 +2,28 @@ import React, { FC } from 'react';
 import s from './Post.module.css';
 import avatar from './../../assets/images/avatar.svg';
 
-const Post: FC = () => {
+interface PostProps {
+    Avatar: string;
+    Name: string | undefined;
+    postDate: string;
+    postTitle: string;
+    postText: string;
+}
+
+const Post: FC<PostProps> = (props) => {
     return (
         <div className={s.post}>
             <div className={s.post__top}>
-                <img src={avatar} alt={'avatar'} className={s.avatar} />
+                <img src={props.Avatar ? props.Avatar : avatar} alt={'avatar'} className={s.avatar} />
                 <div className={s.post__top_text}>
-                    <p className={s.name}>test</p>
-                    <p className={s.date}>Dec 15, 2022</p>
+                    <p className={s.name}>{props.Name}</p>
+                    <p className={s.date}>{props.postDate}</p>
                 </div>
                 <button className={s.follow}>Отслеживать</button>
             </div>
             <div className={s.post__center}>
-                <p className={s.post__title}>Крутая платформа</p>
-                <p className={s.post__text}>платформа для художников очень крутая</p>
+                <p className={s.post__title}>{props.postTitle}</p>
+                <p className={s.post__text}>{props.postText}</p>
             </div>
             <div className={s.post__bottom}>
                 <textarea name={'comments'} className={s.comments__text}></textarea>

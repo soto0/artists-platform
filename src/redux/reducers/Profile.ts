@@ -8,7 +8,8 @@ const initialState: ProfileState = {
     Countries: [],
     Country: "",
     Gender: "",
-    Bio: ""
+    Bio: "",
+    Posts: []
 };
 
 export const ProfileReducer = (state = initialState, action: ProfileAction): ProfileState => {
@@ -21,6 +22,8 @@ export const ProfileReducer = (state = initialState, action: ProfileAction): Pro
             return { ...state, Comments: action.comments }
         case ProfileTypes.GET_COUNTRIES:
             return { ...state, Countries: action.countries }
+        case ProfileTypes.GET_POSTS:
+            return { ...state, Posts: action.posts }
         default: 
             return state
     };

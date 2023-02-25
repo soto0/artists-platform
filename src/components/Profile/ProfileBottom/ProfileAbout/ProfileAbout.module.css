@@ -177,3 +177,23 @@
 .option:hover {
     background-color: #43EF60;
 }
+
+@media screen and (max-width: 720px) {
+    .user__categories {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .info__left {
+        display: none;
+    }
+    .info__right {
+        margin-left: 0;
+        text-align: center;
+    }
+    .user__info {
+        justify-content: center;
+    }
+    .statistic__blocks {
+        justify-content: center;
+    }
+}
