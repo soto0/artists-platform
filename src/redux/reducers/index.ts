@@ -1,3 +1,4 @@
+import { CategoriesReducer } from './Categories';
 import { UsersReducer } from './Users';
 import { ProfileReducer } from './Profile';
 import { LoginReducer } from './Login';
@@ -9,7 +10,8 @@ export const rootReducer = combineReducers({
     popularArtists: PopularArtistsReducer,
     Login: LoginReducer,
     Profile: ProfileReducer,
-    Users: UsersReducer
+    Users: UsersReducer,
+    Categories: CategoriesReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>

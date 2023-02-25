@@ -4,11 +4,12 @@
     font-size: 40px;
 }
 
-.users__block {
+.categories__blocks {
     display: flex;
     flex-direction: row;
-    gap: 16.5px;
     justify-content: center;
-    margin-top: 20px;
     flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }

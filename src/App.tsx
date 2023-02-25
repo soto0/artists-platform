@@ -7,6 +7,7 @@ import ProfileArtWorks from './components/Profile/ProfileBottom/ProfileArtWorks/
 import ProfileFavorites from './components/Profile/ProfileBottom/ProfileFavorites/ProfileFavorites';
 import ProfileMain from './components/Profile/ProfileBottom/ProfileMain/ProfileMain';
 import ProfilePosts from './components/Profile/ProfileBottom/ProfilePosts/ProfilePosts';
+import CategoriesPage from './pages/Categories/Categories';
 import LoginPage from './pages/Login/Login';
 import MainPage from './pages/MainPage/MainPage';
 import Profile from './pages/Profile/Profile';
@@ -30,6 +31,7 @@ const App = () => {
             <Route path={'Posts'} element={<ProfilePosts />} ></Route>
           </Route>
           <Route path={'/Users'} element={<UsersPage />}></Route>
+          <Route path={'/Categories'} element={<CategoriesPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

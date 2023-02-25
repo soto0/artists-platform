@@ -4,7 +4,7 @@ const initialState: LoginState = {
     userLogin: '',
     userPassword: '',
     isAuth: false,
-}
+};
 
 export const LoginReducer = (state = initialState, action: LoginActions): LoginState => {
     switch (action.type) {

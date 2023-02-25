@@ -13,7 +13,7 @@ import AvatarPopup from './AvatarPopup/AvatarPopup';
 const ProfileTop: FC = () => {
     const [popupActive, setPopupActive] = useState(true);
     const { getProfileData } = useProfileAction();
-    const { userLogin, isAuth } = useTypedSelector(state => state.Login);
+    const { userLogin } = useTypedSelector(state => state.Login);
     const { LargePhoto, Avatar, Country, Gender, Bio } = useTypedSelector(state => state.Profile);
 
     let onClickPopup = () => {

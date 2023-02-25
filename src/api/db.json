@@ -985,5 +985,59 @@
       "postText": "Тетсовый пост",
       "id": 1
     }
+  ],
+  "Categories": [
+    {
+      "id": 1,
+      "categoriyTitle": "2D",
+      "caategoriyIcon": "https://pbs.twimg.com/media/ElFBJp-XEAA0v6B.jpg:large"
+    },
+    {
+      "id": 2,
+      "categoriyTitle": "3D",
+      "caategoriyIcon": "https://museum-week.org/magazine/wp-content/uploads/sites/12/2021/07/When-money-grows-on-trees-1024x1024.jpg"
+    },
+    {
+      "id": 3,
+      "categoriyTitle": "2D анимация",
+      "caategoriyIcon": "https://www.animationmentor.com/cdn-cgi/image/width=1920,height=1000,fit=crop,quality=80,format=auto,onerror=redirect,metadata=none/wp-content/uploads/2020/11/top-banner-2d-animation-walkcycles-1.jpg"
+    },
+    {
+      "id": 4,
+      "categoriyTitle": "3D анимация",
+      "caategoriyIcon": "https://www.maacranchi.com/storage/app/public/uploads/0770344658a5e5fe17140aeb2684a881.jpg"
+    },
+    {
+      "id": 5,
+      "categoriyTitle": "игровая анимация",
+      "caategoriyIcon": "https://i.ytimg.com/vi/OKlDzfUqn6M/maxresdefault.jpg"
+    },
+    {
+      "id": 6,
+      "categoriyTitle": "на бумаге",
+      "caategoriyIcon": "https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/db061569-5162-4f64-81be-0e7e837b35c8/paperart108.jpg"
+    },
+    {
+      "id": 7,
+      "categoriyTitle": "NSFW",
+      "caategoriyIcon": "https://cdn.shazoo.ru/w680x680/324363_SOiYyAaWlH_7.jpg"
+    },
+    {
+      "id": 8,
+      "categoriyTitle": "Pixel Art",
+      "caategoriyIcon": "https://www.vectordiary.com/wp-content/uploads/2021/09/20-best-pixel-art-in-2021-featured-image.jpg"
+    },
+    {
+      "id": 9,
+      "categoriyTitle": "Вектор",
+      "caategoriyIcon": "https://www.vectornator.io/blog/content/images/2022/05/611ab4846fca351648d90674_Cover-Vector-Art.png"
+    },
+    {
+      "id": 10,
+      "categoriyTitle": "Аниме",
+      "caategoriyIcon": "https://i.pinimg.com/originals/92/10/b3/9210b35384912f0707fa2144d332d7cd.jpg"
+    }
+    
+
   ]
 }
