@@ -2,14 +2,14 @@ import React, { FC, useEffect } from 'react';
 import { useNewAction } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Artwork from '../Artwork/Artwork';
-import s from './New.module.css';
+import s from './NewArtworks.module.css';
 
-const New: FC = () => {
-    const { getNew } = useNewAction();
-    const { New } = useTypedSelector(state => state.New);
+const NewArtworks: FC = () => {
+    const { getNewArtworks } = useNewAction();
+    const { NewArtworks } = useTypedSelector(state => state.New);
 
     useEffect(() => {
-        getNew();
+        getNewArtworks();
     }, []);
 
     return (
@@ -18,7 +18,7 @@ const New: FC = () => {
                 <h3 className={s.title}>Новый работы</h3>
                 <div className={s.new__block}>
                     {
-                        New.map((artwork: any) => {
+                        NewArtworks.map((artwork: any) => {
                             return (
                                 <Artwork name={artwork.name} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} />
                             )
@@ -30,4 +30,4 @@ const New: FC = () => {
     );
 };
 
-export default New;
+export default NewArtworks;

@@ -5,21 +5,11 @@ header {
     padding: 10px 0;
 }
 
-.logo__block {
-    width: 254px;
-}
-
 .wrapper {
     display: flex;
     align-items: center;
 }
 
-.navigation {
-    margin: 0 auto;
-}
-.navigation_active {
-    margin: 0 auto;
-}
 .navigation__list {
     display: flex;
     flex-direction: row;
@@ -123,7 +113,7 @@ header {
     }
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 865px) {
     .wrapper {
         position: relative;
     }
@@ -230,7 +220,7 @@ header {
     }
     .navigation__list {
         text-align: center;
-        padding-bottom: 180px;
+        padding-bottom: 139px;
     }
     .login__block {
         position: absolute;

@@ -1,14 +1,21 @@
 export interface NewState {
-    New: []
+    NewArtworks: [];
+    NewPosts: [];
 };
 
 export enum NewTypes {
-    GET_NEW = 'GET_NEW'
+    GET_NEW_ARTWORKS = 'GET_NEW_ARTWORKS',
+    GET_NEW_POSTS = 'GET_NEW_POSTS'
 };
 
-interface getNew {
-    type: NewTypes.GET_NEW;
-    new: [];
+interface getNewArtworks {
+    type: NewTypes.GET_NEW_ARTWORKS;
+    newArtworks: [];
 };
 
-export type NewAction = getNew;
+interface getNewPosts {
+    type: NewTypes.GET_NEW_POSTS,
+    newPosts: [];
+}
+
+export type NewAction = getNewArtworks | getNewPosts;

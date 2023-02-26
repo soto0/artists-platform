@@ -33,12 +33,12 @@ const CategorySelector: FC<CategorySelectorProps>= (props) => {
             <p className={s.category} onClick={onClickCategories}>{props.category ? props.category : 'Не выбрана'}</p>
             <div className={props.categorySelectorActive ? s.selector : s.selector_active}>
                 {
-                        Categories.map((category: any) => {
-                            return (
-                                <p className={s.option} onClick={onClickCategory}>{category.categoryTitle}</p>
-                            )
-                        })
-                    }
+                    Categories.map((category: any) => {
+                        return (
+                            <p className={s.option} onClick={onClickCategory}>{category.categoryTitle}</p>
+                        )
+                    })
+                }
             </div>
         </div>
     );

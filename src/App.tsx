@@ -11,7 +11,8 @@ import CategoriesPage from './pages/Categories/Categories';
 import CategoryPage from './pages/Category/Category';
 import LoginPage from './pages/Login/Login';
 import MainPage from './pages/MainPage/MainPage';
-import NewPage from './pages/New/New';
+import NewArtworksPage from './pages/NewArtworks/NewArtworks';
+import NewPostsPage from './pages/NewPosts/NewPosts';
 import Profile from './pages/Profile/Profile';
 import RegistrationPage from './pages/Registration/Registration';
 import UsersPage from './pages/Users/Users';
@@ -35,7 +36,8 @@ const App = () => {
           <Route path={'/Users'} element={<UsersPage />}></Route>
           <Route path={'/Categories/'} element={<CategoriesPage />}></Route>
           <Route path={'/Categories/*'} element={<CategoryPage />}></Route>
-          <Route path={'/New'} element={<NewPage />}></Route>
+          <Route path={'/NewArtworks'} element={<NewArtworksPage />}></Route>
+          <Route path={'/NewPosts'} element={<NewPostsPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
