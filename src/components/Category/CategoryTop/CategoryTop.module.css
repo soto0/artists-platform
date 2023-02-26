@@ -1,0 +1,18 @@
+
+.category__top {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.category__icon {
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
+    box-shadow: 0px 0px 25px #43ef60;
+    border-radius: 20px;
+}
+
+.category__title {
+    font-size: 40px;
+    margin-top: 10px;
+}

@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useProfileAction } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import upload from './../../../../assets/images/upload.svg';
+import CategorySelector from './CategorySelector/CategorySelector';
 
 
 interface UploadJobPopupProps {
@@ -17,6 +18,8 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
     const [artworkImage, setArtworkImage] = useState<any>();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { getProfileData } = useProfileAction();
+    const [ category, setCategory ] = useState();
+    const [ categorySelectorActive, setCategorySelectorActive ] = useState(true);
 
     const validationSchema = yup.object().shape({
         artwork_name: yup.string().required('Заполните поле'),
@@ -43,7 +46,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                 onSubmit={async values => {
                     if (artworkUrl) {
                         await axios.post(`http://localhost:3001/Artworks`,
-                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl },
+                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl, category: category },
                             { withCredentials: true });
                     };
 
@@ -58,6 +61,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                             <Field type={'text'} name={'artwork_name'} onChange={handleChange} onBlur={handleBlur} value={values.artwork_name} className={'artwork__name'} />
                             {touched.artwork_name && errors.artwork_name && <p className={'error'}>Заполните поле</p>}
                         </div>
+                        <CategorySelector categorySelectorActive={categorySelectorActive} setCategorySelectorActive={setCategorySelectorActive} category={category} setCategory={setCategory} />
                         <label htmlFor={'add_artwork'} className={'change__icon_block'}>
                             <img src={upload} alt={'upload'} className={'upload__icon'} />
                             <p className={'add__icon_text'}>Добавьте работу</p>

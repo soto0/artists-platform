@@ -19,7 +19,7 @@ const Categories: FC = () => {
                     {
                         Categories.map((category: any) => {
                             return (
-                                <Category name={category.categoriyTitle} icon={category.caategoriyIcon} />
+                                <Category name={category.categoryTitle} icon={category.categoryIcon} />
                             )
                         })
                     }

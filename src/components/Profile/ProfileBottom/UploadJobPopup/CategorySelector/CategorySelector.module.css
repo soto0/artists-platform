@@ -1,0 +1,41 @@
+.category {
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.selector,
+.selector_active {
+    display: none;
+    position: absolute;
+    margin-top: 5px;
+    width: 150px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0 auto;
+    height: 150px;
+    background-color: rgb(27, 29, 32);
+    overflow-y: scroll;
+}
+
+.selector_active {
+    display: block;
+}
+
+.selector::-webkit-scrollbar,
+.selector_active::-webkit-scrollbar {
+  display: none;
+}
+
+.option {
+    padding: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: white;
+}
+
+.option:hover {
+    background-color: #43EF60;
+}

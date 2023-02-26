@@ -8,6 +8,7 @@ import ProfileFavorites from './components/Profile/ProfileBottom/ProfileFavorite
 import ProfileMain from './components/Profile/ProfileBottom/ProfileMain/ProfileMain';
 import ProfilePosts from './components/Profile/ProfileBottom/ProfilePosts/ProfilePosts';
 import CategoriesPage from './pages/Categories/Categories';
+import CategoryPage from './pages/Category/Category';
 import LoginPage from './pages/Login/Login';
 import MainPage from './pages/MainPage/MainPage';
 import NewPage from './pages/New/New';
@@ -32,7 +33,8 @@ const App = () => {
             <Route path={'Posts'} element={<ProfilePosts />} ></Route>
           </Route>
           <Route path={'/Users'} element={<UsersPage />}></Route>
-          <Route path={'/Categories'} element={<CategoriesPage />}></Route>
+          <Route path={'/Categories/'} element={<CategoriesPage />}></Route>
+          <Route path={'/Categories/*'} element={<CategoryPage />}></Route>
           <Route path={'/New'} element={<NewPage />}></Route>
         </Routes>
         <Footer />
