@@ -8,6 +8,7 @@ import * as CategoriesActionCreators from './../redux/action-creators/Categories
 import * as NewActionCreators from '../redux/action-creators/New';
 import * as CategoryActionCreators from './../redux/action-creators/Category';
 import * as ArtworkActionCreators from './../redux/action-creators/Artwork';
+import * as HeaderActionCreators from './../redux/action-creators/Header';
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -47,4 +48,10 @@ export const useCategoryAction = () => {
 export const useArtworkAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(ArtworkActionCreators, dispatch);
+}
+
+
+export const useHeaderAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(HeaderActionCreators, dispatch);
 }

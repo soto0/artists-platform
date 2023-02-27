@@ -1,3 +1,4 @@
+import { HeaderReducer } from './Header';
 import { ArtworkReducer } from './Artwork';
 import { CategoryReducer } from './Category';
 import { NewReducer } from './New';
@@ -17,7 +18,8 @@ export const rootReducer = combineReducers({
     Categories: CategoriesReducer,
     New: NewReducer,
     Category: CategoryReducer,
-    Artwork: ArtworkReducer
+    Artwork: ArtworkReducer,
+    Header: HeaderReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>

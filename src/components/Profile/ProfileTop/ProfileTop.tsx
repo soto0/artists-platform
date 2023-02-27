@@ -14,14 +14,20 @@ const ProfileTop: FC = () => {
     const [popupActive, setPopupActive] = useState(true);
     const { getProfileData } = useProfileAction();
     const { userLogin } = useTypedSelector(state => state.Login);
-    const { LargePhoto, Avatar, Country, Gender, Bio } = useTypedSelector(state => state.Profile);
+    const { LargePhoto, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
 
     let onClickPopup = () => {
         setPopupActive(!popupActive);
     };
 
+    const loginProfile = window.location.pathname.slice(9);
+
     useEffect(() => {
-        getProfileData(userLogin);
+        if(userLogin != loginProfile) {
+            getProfileData(loginProfile);
+        } else {
+            getProfileData(userLogin);
+        }
     }, []);
 
     return (
@@ -36,7 +42,7 @@ const ProfileTop: FC = () => {
                         <div className={s.change__small_icon_back}></div>
                     </span>
                     <div className={s.profile__top_info_text}>
-                        <p className={s.profile__top_info_name}>{userLogin}</p>
+                        <p className={s.profile__top_info_name}>{Login}</p>
                         <ul className={s.profile__top_info_list}>
                             <li className={s.profile__top_info_item}>
                                 <Link to=''>Подписчики <span>0</span></Link>

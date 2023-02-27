@@ -10,7 +10,9 @@ const Header: FC = () => {
     const [menuActive, setMenuActive] = useState(true);
     const [profileMenuActive, setProfileMenuActive] = useState(true);
     const { isAuth, userLogin } = useTypedSelector(state => state.Login);
-    const { Avatar } = useTypedSelector(state => state.Profile);
+    
+    const { Avatar } = useTypedSelector(state => state.Header);
+
 
     let onClickBurger = () => {
         setMenuActive(!menuActive);

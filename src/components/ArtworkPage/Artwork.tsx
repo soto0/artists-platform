@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from 'react';
 import s from './Artwork.module.css';
-import image from './../../assets/images/test.jpg'
 import favorite from './../../assets/images/favorite.svg';
 import like from './../../assets/images/like.svg';
 import comment from './../../assets/images/comment.svg';
