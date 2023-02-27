@@ -9,12 +9,13 @@ interface ArtworkProps {
     name: string | undefined,
     artworkName: string,
     artworkImage: string,
-    avatar: string | undefined
+    avatar: string | undefined,
+    id?: number
 }
 
 const Artwork: FC<ArtworkProps> = (props) => {
     return (
-        <Link to={''} className={s.artwork}>
+        <Link to={'/Artwork/' + props.id} className={s.artwork}>
             <img src={props.artworkImage} alt={'artwork'} className={s.artwork__icon} />
             <p className={s.title}>{props.artworkName}</p>
             <div className={s.artwork__down}>

@@ -17,6 +17,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
     const [artworkUrl, setArtworkUrl] = useState<any>();
     const [artworkImage, setArtworkImage] = useState<any>();
     const { userLogin } = useTypedSelector(state => state.Login);
+    const { Avatar } = useTypedSelector(state => state.Profile);
     const { getProfileData } = useProfileAction();
     const [ category, setCategory ] = useState();
     const [ categorySelectorActive, setCategorySelectorActive ] = useState(true);
@@ -46,7 +47,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                 onSubmit={async values => {
                     if (artworkUrl) {
                         await axios.post(`http://localhost:3001/Artworks`,
-                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl, category: category },
+                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl, category: category, avatar: Avatar },
                             { withCredentials: true });
                     };
 

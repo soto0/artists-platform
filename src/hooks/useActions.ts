@@ -7,6 +7,7 @@ import * as UsersActionCreators from './../redux/action-creators/Users';
 import * as CategoriesActionCreators from './../redux/action-creators/Categories';
 import * as NewActionCreators from '../redux/action-creators/New';
 import * as CategoryActionCreators from './../redux/action-creators/Category';
+import * as ArtworkActionCreators from './../redux/action-creators/Artwork';
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -41,4 +42,9 @@ export const useNewAction = () => {
 export const useCategoryAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(CategoryActionCreators, dispatch);
+}
+
+export const useArtworkAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(ArtworkActionCreators, dispatch);
 }

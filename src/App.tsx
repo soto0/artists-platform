@@ -7,6 +7,7 @@ import ProfileArtWorks from './components/Profile/ProfileBottom/ProfileArtWorks/
 import ProfileFavorites from './components/Profile/ProfileBottom/ProfileFavorites/ProfileFavorites';
 import ProfileMain from './components/Profile/ProfileBottom/ProfileMain/ProfileMain';
 import ProfilePosts from './components/Profile/ProfileBottom/ProfilePosts/ProfilePosts';
+import ArtworkPage from './pages/Artwork/Artwork';
 import CategoriesPage from './pages/Categories/Categories';
 import CategoryPage from './pages/Category/Category';
 import LoginPage from './pages/Login/Login';
@@ -38,6 +39,7 @@ const App = () => {
           <Route path={'/Categories/*'} element={<CategoryPage />}></Route>
           <Route path={'/NewArtworks'} element={<NewArtworksPage />}></Route>
           <Route path={'/NewPosts'} element={<NewPostsPage />}></Route>
+          <Route path={'Artwork/*'} element={<ArtworkPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

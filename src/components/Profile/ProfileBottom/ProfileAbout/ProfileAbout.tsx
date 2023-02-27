@@ -7,12 +7,13 @@ import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import CountrySelector from './CountrySelector/CountrySelector';
 import GenderSelector from './GenderSelector/GenderSelector';
 import Bio from './Bio/Bio';
+import Statistic from './Statistic/Statistic';
 
 const ProfileAbout: FC = () => {
     const [ countrySelectorActive, setCountrySelectorActive ] = useState(true);
     const [ genderSelectorActive, setGenderSelectorActive ] = useState(true);
     const { userLogin } = useTypedSelector(state => state.Login);
-    const { PostsStatistics, ArtworksStatistic } = useTypedSelector(state => state.Profile);
+    
     const { getCountries, getStatistic } = useProfileAction();
 
     useEffect(() => {
@@ -55,35 +56,7 @@ const ProfileAbout: FC = () => {
                         <Bio />
                     </div>
                 </div>
-                <div id={'statistics'} className={s.statistics}>
-                    <h3>Статистика</h3>
-                    <div className={s.statistic__blocks}>
-                        <div className={s.statistic__block}>
-                            <h4 className={s.statistic__title}>Посты</h4>
-                            <p className={s.statistic__count}>{PostsStatistics}</p>
-                        </div>
-                        <div className={s.statistic__block}>
-                            <h4 className={s.statistic__title}>Подписчики</h4>
-                            <p className={s.statistic__count}>5</p>
-                        </div>
-                        <div className={s.statistic__block}>
-                            <h4 className={s.statistic__title}>Подписки</h4>
-                            <p className={s.statistic__count}>5</p>
-                        </div>
-                        <div className={s.statistic__block}>
-                            <h4 className={s.statistic__title}>Сообщества</h4>
-                            <p className={s.statistic__count}>5</p>
-                        </div>
-                        <div className={s.statistic__block}>
-                            <h4 className={s.statistic__title}>Работы</h4>
-                            <p className={s.statistic__count}>{ArtworksStatistic}</p>
-                        </div>
-                        <div className={s.statistic__block}>
-                            <h4 className={s.statistic__title}>Избранное</h4>
-                            <p className={s.statistic__count}>5</p>
-                        </div>
-                    </div>
-                </div>
+                <Statistic />
                 <div id={'subscribers'} className={s.subscribers}>
                     <h3>Подписчики</h3>
                     <div className={s.subscriber__blocks}>
