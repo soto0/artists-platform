@@ -2,7 +2,7 @@
 
 <b>
 Ввести данную комадну в консоли:
- json-server --watch (path to db.json file) --port 3001 (обязательно на порте 3001)
+ npm run json
 <b>
 
 
