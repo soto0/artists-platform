@@ -12,10 +12,12 @@ const ProfileAbout: FC = () => {
     const [ countrySelectorActive, setCountrySelectorActive ] = useState(true);
     const [ genderSelectorActive, setGenderSelectorActive ] = useState(true);
     const { userLogin } = useTypedSelector(state => state.Login);
-    const { getCountries } = useProfileAction();
+    const { PostsStatistics, ArtworksStatistic } = useTypedSelector(state => state.Profile);
+    const { getCountries, getStatistic } = useProfileAction();
 
     useEffect(() => {
         getCountries();
+        getStatistic(userLogin);
     }, []);
 
     return (
@@ -58,7 +60,7 @@ const ProfileAbout: FC = () => {
                     <div className={s.statistic__blocks}>
                         <div className={s.statistic__block}>
                             <h4 className={s.statistic__title}>Посты</h4>
-                            <p className={s.statistic__count}>5</p>
+                            <p className={s.statistic__count}>{PostsStatistics}</p>
                         </div>
                         <div className={s.statistic__block}>
                             <h4 className={s.statistic__title}>Подписчики</h4>
@@ -74,7 +76,7 @@ const ProfileAbout: FC = () => {
                         </div>
                         <div className={s.statistic__block}>
                             <h4 className={s.statistic__title}>Работы</h4>
-                            <p className={s.statistic__count}>5</p>
+                            <p className={s.statistic__count}>{ArtworksStatistic}</p>
                         </div>
                         <div className={s.statistic__block}>
                             <h4 className={s.statistic__title}>Избранное</h4>

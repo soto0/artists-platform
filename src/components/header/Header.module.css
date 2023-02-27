@@ -39,6 +39,7 @@ header {
 .login__block {
     display: flex;
     gap: 20px;
+    margin-left: auto;
 }
 .login__block_active {
     display: flex;
@@ -91,7 +92,11 @@ header {
     border-radius: 50%;
     object-fit: cover;
 }
-
+@media screen and (max-width: 1200px) {
+    .navigation__list {
+        gap: 0px;
+    }
+}
 @media screen and (max-width: 1000px) {
     .logo__block {
         width: max-content;

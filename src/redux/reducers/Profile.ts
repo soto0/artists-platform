@@ -10,7 +10,9 @@ const initialState: ProfileState = {
     Gender: "",
     Bio: "",
     Posts: [],
-    Login: ""
+    Login: "",
+    PostsStatistics: 0,
+    ArtworksStatistic: 0
 };
 
 export const ProfileReducer = (state = initialState, action: ProfileAction): ProfileState => {
@@ -25,6 +27,8 @@ export const ProfileReducer = (state = initialState, action: ProfileAction): Pro
             return { ...state, Countries: action.countries }
         case ProfileTypes.GET_POSTS:
             return { ...state, Posts: action.posts }
+        case ProfileTypes.GET_STATISTIC:
+            return { ...state, PostsStatistics: action.postsStatistic, ArtworksStatistic: action.artworksStatistic }
         default: 
             return state
     };
