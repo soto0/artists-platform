@@ -10,7 +10,8 @@ const Categories: FC = () => {
 
     useEffect(() => {
         getCategories();
-    }, [])
+    }, []);
+    
     return (
         <main>
             <div className={'container'}>

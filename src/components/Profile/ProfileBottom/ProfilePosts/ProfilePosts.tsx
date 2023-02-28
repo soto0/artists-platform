@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import s from './ProfilePosts.module.css';
 import avatar from './../../../../assets/images/avatar.svg';
 import Post from '../../../Post/Post';
@@ -26,6 +26,10 @@ const ProfilePosts: FC = () => {
         postTitle: yup.string().required('Заполните поле'),
         postText: yup.string().required('Заполните поле'),
     });
+
+    useEffect(() => {
+        getPosts(loginProfile);
+    }, []);
 
     return (
         <div className={s.posts__block}>
@@ -72,7 +76,7 @@ const ProfilePosts: FC = () => {
                 {
                     Posts?.map((post: any) => {
                         return (
-                            <Post Avatar={Avatar} Name={userLogin} postDate={post.postDate} postTitle={post.postTitle} postText={post.postText} />
+                            <Post Avatar={post.avatar} Name={post.profile} postDate={post.postDate} postTitle={post.postTitle} postText={post.postText} />
                         )
                     })
                 }

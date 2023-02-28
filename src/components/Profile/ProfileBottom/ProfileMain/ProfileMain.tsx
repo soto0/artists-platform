@@ -1,16 +1,22 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import s from './ProfileMain.module.css';
 import upload from './../../../../assets/images/upload.svg';
 import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import Artwork from '../../../Artwork/Artwork';
 import Comments from './Comments/Commets';
+import { useProfileAction } from '../../../../hooks/useActions';
 
 const ProfileMain: FC = () => {
     const { Artworks, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
     const loginProfile = window.location.pathname.slice(9);
+    const { getComments } = useProfileAction();
+
+    useEffect(() => {
+        getComments(loginProfile);
+    }, []);
 
     let onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
@@ -23,12 +29,11 @@ const ProfileMain: FC = () => {
                     <h3>Работы</h3>
                     {
                         Artworks?.length !== 0 ?
-
                             <div className={s.artworks__block}>
                                 {
                                     Artworks?.map((artwork: any) => {
                                         return (
-                                            <Artwork name={userLogin} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
+                                            <Artwork name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
                                         )
                                     })
                                 }
@@ -38,8 +43,10 @@ const ProfileMain: FC = () => {
                                 undefined :
                                 <div className={s.upload__artworks}>
                                     <img src={upload} alt={'upload__artwork'} className={s.upload__artworks_icon} />
-                                    <p className={s.upload__artwork_text}>Загрузить работу</p>
+                                    <p className={s.upload__artwork_text}>Загрузить первую работу</p>
                                     <button className={s.upload__artwork_button} onClick={onClickAddArtwork}>Загрузить</button>
+                                    <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} setArtworkPopupActive={setArtworkPopupActive} />
+                                    <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>
                                 </div>
                     }
                 </div>
@@ -63,8 +70,6 @@ const ProfileMain: FC = () => {
                 <h3>Комментарии</h3>
                 <Comments userLogin={userLogin} Avatar={Avatar} Login={Login} />
             </div>
-            <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} setArtworkPopupActive={setArtworkPopupActive} />
-            <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>
         </div>
     );
 };

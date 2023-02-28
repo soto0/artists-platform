@@ -20,7 +20,7 @@ const NewArtworks: FC = () => {
                     {
                         NewArtworks.map((artwork: any) => {
                             return (
-                                <Artwork name={artwork.name} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
+                                <Artwork name={artwork.login} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
                             )
                         })
                     }

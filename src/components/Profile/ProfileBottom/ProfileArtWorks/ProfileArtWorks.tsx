@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { useProfileAction } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import Artwork from '../../../Artwork/Artwork';
 import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
@@ -8,11 +9,16 @@ const ProfileArtWorks: FC = () => {
     const { Artworks, Avatar } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
+    const { getArtworks } = useProfileAction();
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
     let onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
     };
+
+    useEffect(() => {
+        getArtworks(loginProfile);
+    }, []);
 
     return (
         <div className={s.artworks}>
@@ -28,7 +34,7 @@ const ProfileArtWorks: FC = () => {
                 {
                     Artworks?.map((artwork: any) => {
                         return (
-                            <Artwork name={userLogin} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
+                            <Artwork name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
                         )
                     })
                 }
