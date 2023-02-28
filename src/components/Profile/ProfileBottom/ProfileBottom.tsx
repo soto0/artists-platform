@@ -6,12 +6,12 @@ import s from './ProfileBottom.module.css';
 
 const ProfileBottom: FC = () => {
     const { userLogin } = useTypedSelector(state => state.Login);
-    const { Login } = useTypedSelector(state => state.Profile);
     const { getArtworks, getComments, getPosts } = useProfileAction();
+    const loginProfile = window.location.pathname.slice(9);
 
     useEffect(() => {
-        getArtworks(userLogin);
-        getComments(Login);
+        getArtworks(loginProfile);
+        getComments(loginProfile);
         getPosts(userLogin);
     }, []);
 

@@ -21,6 +21,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
     const { getProfileData } = useProfileAction();
     const [ category, setCategory ] = useState();
     const [ categorySelectorActive, setCategorySelectorActive ] = useState(true);
+    const loginProfile = window.location.pathname.slice(9);
 
     const validationSchema = yup.object().shape({
         artwork_name: yup.string().required('Заполните поле'),
@@ -47,7 +48,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                 onSubmit={async values => {
                     if (artworkUrl) {
                         await axios.post(`http://localhost:3001/Artworks`,
-                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl, category: category, avatar: Avatar },
+                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl, category: category, avatar: Avatar, profile: loginProfile },
                             { withCredentials: true });
                     };
 

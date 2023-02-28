@@ -20,6 +20,7 @@ type Date = {
 const Comments: FC<CommentsProps> = (props) => {
     const { Comments } = useTypedSelector(state => state.Profile);
     const { getProfileData } = useProfileAction();
+    const loginProfile = window.location.pathname.slice(9);
 
     return (
         <div className={s.comments}>
@@ -33,7 +34,7 @@ const Comments: FC<CommentsProps> = (props) => {
                     const now = today.toLocaleString('ru-Ru', options);
 
                     await axios.post('http://localhost:3001/Comments',
-                        { commentText: values.comment, login: props.Login, avatar: props.Avatar, commentDate: now},
+                        { commentText: values.comment, login: props.Login, avatar: props.Avatar, commentDate: now, profile: loginProfile},
                         { withCredentials: true })
 
                     getProfileData(props.userLogin);

@@ -15,7 +15,7 @@ const ProfileTop: FC = () => {
     const { getProfileData } = useProfileAction();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { LargePhoto, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
-    const loginProfile = window.location.pathname.slice(9);
+    const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
     let onClickPopup = () => {
         setPopupActive(!popupActive);
@@ -36,13 +36,13 @@ const ProfileTop: FC = () => {
                 <div className={s.profile__top_info}>
                     <img src={Avatar === '' ? avatar : Avatar} alt={'profile_small_icon'} className={s.profile_small_icon} />
                     {
-                        userLogin !== loginProfile ? 
-                            undefined :                     
+                        userLogin !== loginProfile ?
+                            undefined :
                             <span className={s.change__small_icon} onClick={onClickPopup}>
                                 <img src={changeSmallIcon} alt={'change_small_icon'} className={s.change__small_icon_after} />
                                 <p>изменить</p>
                                 <div className={s.change__small_icon_back}></div>
-                            </span> 
+                            </span>
                     }
                     <div className={s.profile__top_info_text}>
                         <p className={s.profile__top_info_name}>{Login}</p>
@@ -59,12 +59,12 @@ const ProfileTop: FC = () => {
                         </ul>
                     </div>
                     {
-                        userLogin !== loginProfile ? 
+                        userLogin !== loginProfile ?
                             undefined :
                             <button className={s.change__large_icon} onClick={onClickPopup}>
                                 <img src={changeIcon} alt={'change_icon'} className={s.change__large_icon_before} />
                                 Изменить фон
-                            </button>      
+                            </button>
                     }
                 </div>
             </p>

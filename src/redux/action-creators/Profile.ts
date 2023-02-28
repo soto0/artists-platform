@@ -19,7 +19,7 @@ export const getArtworks = (userLogin: string | undefined) => {
 
 export const getComments = (Login: string | undefined) => {
     return async (dispatch: Dispatch<ProfileAction>) => {
-        const response = await axios.get('http://localhost:3001/Comments/?login=' + Login);
+        const response = await axios.get('http://localhost:3001/Comments/?profile=' + Login);
         dispatch({ type: ProfileTypes.GET_COMMENTS, comments: response.data});
     };
 };
@@ -31,9 +31,9 @@ export const getCountries = () => {
     };
 };
 
-export const getPosts = (userLogin: string | undefined) => {
+export const getPosts = (Login: string | undefined) => {
     return async (dispatch: Dispatch<ProfileAction>) => {
-        const response = await axios.get('http://localhost:3001/Posts?login=' + userLogin);
+        const response = await axios.get('http://localhost:3001/Posts?profile=' + Login);
         dispatch({ type: ProfileTypes.GET_POSTS, posts: response.data});
     };
 };

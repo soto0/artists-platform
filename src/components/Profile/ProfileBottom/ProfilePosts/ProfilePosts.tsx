@@ -21,6 +21,8 @@ const ProfilePosts: FC = () => {
     const { getPosts } = useProfileAction();
     const loginProfile = window.location.pathname.slice(9);
 
+    const userLoginText = userLogin + '/Posts';
+
 
     const validationSchema = yup.object().shape({
         postTitle: yup.string().required('Заполните поле'),
@@ -30,7 +32,7 @@ const ProfilePosts: FC = () => {
     return (
         <div className={s.posts__block}>
             {
-                userLogin !== loginProfile ?
+                userLoginText !== loginProfile ?
                     undefined :
                     <Formik
                         initialValues={{ postTitle: '', postText: '' }}

@@ -10,7 +10,7 @@ const ProfileArtWorks: FC = () => {
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
     const loginProfile = window.location.pathname.slice(8);
     
-    const userLoginText = userLogin + '/Artworks';
+    const userLoginText = '/' +  userLogin + '/Artworks';
 
     let onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
@@ -22,8 +22,8 @@ const ProfileArtWorks: FC = () => {
                 <h3>Работы</h3>
                 {
                     userLoginText !== loginProfile ?
-                        undefined :
-                        <button className={s.add__artwork} onClick={onClickAddArtwork}>Добавить работу</button>
+                    undefined :
+                    <button className={s.add__artwork} onClick={onClickAddArtwork}>Добавить работу</button> 
                 }
             </div>
             <div className={s.artworks__block}>

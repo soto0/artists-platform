@@ -4,7 +4,6 @@ import s from './ProfileCenter.module.css';
 
 const ProfileCenter: FC = () => {    
     const loginProfile = window.location.pathname.slice(9);
-    console.log(loginProfile);
     
     return (
         <div className={s.profile__navigation}>
