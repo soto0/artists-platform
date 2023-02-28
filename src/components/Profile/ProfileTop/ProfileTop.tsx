@@ -22,7 +22,7 @@ const ProfileTop: FC = () => {
     };
 
     useEffect(() => {
-        if(userLogin != loginProfile) {
+        if(userLogin !== loginProfile) {
             getProfileData(loginProfile);
         } else {
             getProfileData(userLogin);

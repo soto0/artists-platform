@@ -8,7 +8,7 @@ const ProfileArtWorks: FC = () => {
     const { Artworks, Avatar } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
-    const loginProfile = window.location.pathname.slice(8);
+    const loginProfile = window.location.pathname.slice(9);
     
     const userLoginText = '/' +  userLogin + '/Artworks';
 

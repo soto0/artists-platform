@@ -12,7 +12,7 @@ import Statistic from './Statistic/Statistic';
 const ProfileAbout: FC = () => {
     const [ countrySelectorActive, setCountrySelectorActive ] = useState(true);
     const [ genderSelectorActive, setGenderSelectorActive ] = useState(true);
-    const { Country, Gender} = useTypedSelector(state => state.Profile);
+    const { Country, Gender, Login} = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const loginProfile = window.location.pathname.slice(9);
     
@@ -20,7 +20,7 @@ const ProfileAbout: FC = () => {
 
     useEffect(() => {
         getCountries();
-        getStatistic(userLogin);
+        getStatistic(loginProfile)
     }, []);
 
     return (
@@ -33,7 +33,7 @@ const ProfileAbout: FC = () => {
             </div>
             <div className={s.info__right}>
                 <div id={'about'} className={s.about__info}>
-                    <p className={s.name}>{userLogin}</p>
+                    <p className={s.name}>{Login}</p>
                     <div className={s.user__categories}>
                         <p className={s.user__category}>Художник</p>
                         <p className={s.user__category}>Смотрящий</p>
