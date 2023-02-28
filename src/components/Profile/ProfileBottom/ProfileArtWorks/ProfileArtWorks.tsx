@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useProfileAction } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import Artwork from '../../../Artwork/Artwork';
+import Artwork from '../../../ArtworkSmall/ArtworkSmall';
 import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
 import s from './ProfileArtWorks.module.css';
 

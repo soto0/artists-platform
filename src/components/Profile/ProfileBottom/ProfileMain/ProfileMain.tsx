@@ -3,7 +3,7 @@ import s from './ProfileMain.module.css';
 import upload from './../../../../assets/images/upload.svg';
 import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import Artwork from '../../../Artwork/Artwork';
+import ArtworkSmall from '../../../ArtworkSmall/ArtworkSmall';
 import Comments from './Comments/Commets';
 import { useProfileAction } from '../../../../hooks/useActions';
 
@@ -12,9 +12,10 @@ const ProfileMain: FC = () => {
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
     const loginProfile = window.location.pathname.slice(9);
-    const { getComments } = useProfileAction();
+    const { getComments, getArtworks } = useProfileAction();
 
     useEffect(() => {
+        getArtworks(loginProfile);
         getComments(loginProfile);
     }, []);
 
@@ -33,7 +34,7 @@ const ProfileMain: FC = () => {
                                 {
                                     Artworks?.map((artwork: any) => {
                                         return (
-                                            <Artwork name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
+                                            <ArtworkSmall name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
                                         )
                                     })
                                 }

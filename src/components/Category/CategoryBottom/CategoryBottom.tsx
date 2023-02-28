@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useCategoryAction } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import Artwork from '../../Artwork/Artwork';
+import ArtworkSmall from '../../ArtworkSmall/ArtworkSmall';
 import s from './CategoryBottom.module.css';
 
 const CategoryBottom: FC = () => {
@@ -18,7 +18,7 @@ const CategoryBottom: FC = () => {
             {
                 Artworks.map((artwork: any) => {
                     return (
-                        <Artwork name={artwork.name} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
+                        <ArtworkSmall name={artwork.name} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
                     )
                 })
             }

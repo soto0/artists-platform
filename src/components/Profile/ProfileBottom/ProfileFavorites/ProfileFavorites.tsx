@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Artwork from '../../../Artwork/Artwork';
+import Artwork from '../../../ArtworkSmall/ArtworkSmall';
 import s from './ProfileFavorites.module.css';
 
 const ProfileFavorites: FC = () => {

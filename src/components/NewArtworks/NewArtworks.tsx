@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { useNewAction } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import Artwork from '../Artwork/Artwork';
+import ArtworkSmall from '../ArtworkSmall/ArtworkSmall';
 import s from './NewArtworks.module.css';
 
 const NewArtworks: FC = () => {
@@ -20,7 +20,7 @@ const NewArtworks: FC = () => {
                     {
                         NewArtworks.map((artwork: any) => {
                             return (
-                                <Artwork name={artwork.login} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
+                                <ArtworkSmall name={artwork.login} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
                             )
                         })
                     }
