@@ -12,7 +12,9 @@ import Statistic from './Statistic/Statistic';
 const ProfileAbout: FC = () => {
     const [ countrySelectorActive, setCountrySelectorActive ] = useState(true);
     const [ genderSelectorActive, setGenderSelectorActive ] = useState(true);
+    const { Country, Gender} = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
+    const loginProfile = window.location.pathname.slice(9);
     
     const { getCountries, getStatistic } = useProfileAction();
 
@@ -38,18 +40,26 @@ const ProfileAbout: FC = () => {
                         <p className={s.user__category}>Профессионал</p>
                     </div>
                     <div className={s.user__info}>
-                        <CountrySelector 
-                            countrySelectorActive={countrySelectorActive} 
-                            setCountrySelectorActive={setCountrySelectorActive} 
-                            setGenderSelectorActive={setGenderSelectorActive} 
-                            genderSelectorActive={genderSelectorActive} 
-                        />
-                        <GenderSelector 
-                            genderSelectorActive={genderSelectorActive} 
-                            countrySelectorActive={countrySelectorActive} 
-                            setGenderSelectorActive={setGenderSelectorActive} 
-                            setCountrySelectorActive={setCountrySelectorActive} 
-                        />
+                        {
+                            userLogin !== loginProfile ?
+                                <p className={s.address}>{Country ? Country : 'Не выбран'}</p> :
+                                <CountrySelector
+                                    countrySelectorActive={countrySelectorActive}
+                                    setCountrySelectorActive={setCountrySelectorActive}
+                                    setGenderSelectorActive={setGenderSelectorActive}
+                                    genderSelectorActive={genderSelectorActive}
+                                />
+                        }
+                        {
+                            userLogin !== loginProfile ?
+                            <p className={s.gender}>{Gender ? Gender : 'Не выбран'}</p> :
+                                <GenderSelector 
+                                    genderSelectorActive={genderSelectorActive} 
+                                    countrySelectorActive={countrySelectorActive} 
+                                    setGenderSelectorActive={setGenderSelectorActive} 
+                                    setCountrySelectorActive={setCountrySelectorActive} 
+                                />
+                        }
                     </div>
                     <div className={s.user__bio}>
                         <h4 className={s.title}>Биография</h4>

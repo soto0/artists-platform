@@ -10,6 +10,7 @@ const ProfileMain: FC = () => {
     const { Artworks, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
+    const loginProfile = window.location.pathname.slice(9);
 
     let onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
@@ -33,11 +34,13 @@ const ProfileMain: FC = () => {
                                 }
                             </div>
                             :
-                            <div className={s.upload__artworks}>
-                                <img src={upload} alt={'upload__artwork'} className={s.upload__artworks_icon} />
-                                <p className={s.upload__artwork_text}>Загрузить работу</p>
-                                <button className={s.upload__artwork_button} onClick={onClickAddArtwork}>Загрузить</button>
-                            </div>
+                            userLogin !== loginProfile ?
+                                undefined :
+                                <div className={s.upload__artworks}>
+                                    <img src={upload} alt={'upload__artwork'} className={s.upload__artworks_icon} />
+                                    <p className={s.upload__artwork_text}>Загрузить работу</p>
+                                    <button className={s.upload__artwork_button} onClick={onClickAddArtwork}>Загрузить</button>
+                                </div>
                     }
                 </div>
                 <div className={s.about}>
@@ -45,13 +48,13 @@ const ProfileMain: FC = () => {
                     <div className={s.about__block}>
                         <div className={s.about__block_top}>
                             <div className={s.about__block_info}>
-                                <p className={s.address}>{Country}</p>
-                                <p className={s.gender}>{Gender}</p>
+                                <p className={s.address}>{Country  ? Country : 'Не выбрана'}</p>
+                                <p className={s.gender}>{Gender ? Gender : 'Не выбран'}</p>
                             </div>
                         </div>
                         <div className={s.about__block__bio}>
                             <h4 className={s.title}>Биография</h4>
-                            <p className={s.bio}>{Bio}</p>
+                            <p className={s.bio}>{Bio ? Bio : 'Нет'}</p>
                         </div>
                     </div>
                 </div>

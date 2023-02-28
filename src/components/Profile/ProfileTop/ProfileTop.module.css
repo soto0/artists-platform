@@ -12,7 +12,7 @@
     filter: brightness(50%);
 }
 
-.profile__top div {
+.profile__top p {
     position: relative;
 }
 

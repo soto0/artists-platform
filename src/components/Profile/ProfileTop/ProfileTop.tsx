@@ -15,12 +15,11 @@ const ProfileTop: FC = () => {
     const { getProfileData } = useProfileAction();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { LargePhoto, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
+    const loginProfile = window.location.pathname.slice(9);
 
     let onClickPopup = () => {
         setPopupActive(!popupActive);
     };
-
-    const loginProfile = window.location.pathname.slice(9);
 
     useEffect(() => {
         if(userLogin != loginProfile) {
@@ -33,14 +32,18 @@ const ProfileTop: FC = () => {
     return (
         <div className={s.profile__top}>
             <img src={LargePhoto === '' ? profileLargeIcon : LargePhoto} alt={'profile_large_icon'} className={s.profile__large_icon} />
-            <div className={'container'}>
+            <p className={'container'}>
                 <div className={s.profile__top_info}>
                     <img src={Avatar === '' ? avatar : Avatar} alt={'profile_small_icon'} className={s.profile_small_icon} />
-                    <span className={s.change__small_icon} onClick={onClickPopup}>
-                        <img src={changeSmallIcon} alt={'change_small_icon'} className={s.change__small_icon_after} />
-                        <p>изменить</p>
-                        <div className={s.change__small_icon_back}></div>
-                    </span>
+                    {
+                        userLogin !== loginProfile ? 
+                            undefined :                     
+                            <span className={s.change__small_icon} onClick={onClickPopup}>
+                                <img src={changeSmallIcon} alt={'change_small_icon'} className={s.change__small_icon_after} />
+                                <p>изменить</p>
+                                <div className={s.change__small_icon_back}></div>
+                            </span> 
+                    }
                     <div className={s.profile__top_info_text}>
                         <p className={s.profile__top_info_name}>{Login}</p>
                         <ul className={s.profile__top_info_list}>
@@ -55,11 +58,16 @@ const ProfileTop: FC = () => {
                             </li>
                         </ul>
                     </div>
-                    <button className={s.change__large_icon} onClick={onClickPopup}>
-                        <img src={changeIcon} alt={'change_icon'} className={s.change__large_icon_before} />
-                        Изменить фон</button>
+                    {
+                        userLogin !== loginProfile ? 
+                            undefined :
+                            <button className={s.change__large_icon} onClick={onClickPopup}>
+                                <img src={changeIcon} alt={'change_icon'} className={s.change__large_icon_before} />
+                                Изменить фон
+                            </button>      
+                    }
                 </div>
-            </div>
+            </p>
             <div onClick={onClickPopup} className={popupActive ? s.popup__back : s.popup__back_active}></div>
             <LargePhotoPopup 
                 popupActive={popupActive} 

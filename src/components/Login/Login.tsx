@@ -19,7 +19,7 @@ const Login: FC = () => {
 
     useEffect(() => {
         if(isAuth === true) {
-            navigate('/Profile/' + userLogin + '/');
+            navigate('/Profile/' + userLogin);
             getAvatar(userLogin);
         };
     });
