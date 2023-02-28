@@ -8,9 +8,7 @@ const ProfileArtWorks: FC = () => {
     const { Artworks, Avatar } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
-    const loginProfile = window.location.pathname.slice(9);
-    
-    const userLoginText = '/' +  userLogin + '/Artworks';
+    const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
     let onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
@@ -21,7 +19,7 @@ const ProfileArtWorks: FC = () => {
             <div className={s.artworks__top}>
                 <h3>Работы</h3>
                 {
-                    userLoginText !== loginProfile ?
+                    userLogin !== loginProfile ?
                     undefined :
                     <button className={s.add__artwork} onClick={onClickAddArtwork}>Добавить работу</button> 
                 }

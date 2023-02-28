@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import s from './Post.module.css';
 import avatar from './../../assets/images/avatar.svg';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface PostProps {
     Avatar: string;
@@ -11,6 +12,9 @@ interface PostProps {
 }
 
 const Post: FC<PostProps> = (props) => {
+    const { userLogin } = useTypedSelector(state => state.Login);
+    const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
+
     return (
         <div className={s.post}>
             <div className={s.post__top}>
@@ -19,7 +23,11 @@ const Post: FC<PostProps> = (props) => {
                     <p className={s.name}>{props.Name}</p>
                     <p className={s.date}>{props.postDate}</p>
                 </div>
-                <button className={s.follow}>Отслеживать</button>
+                {
+                    userLogin !== loginProfile ?
+                        <button className={s.follow}>Отслеживать</button> :
+                        undefined
+                }
             </div>
             <div className={s.post__center}>
                 <p className={s.post__title}>{props.postTitle}</p>

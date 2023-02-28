@@ -14,7 +14,7 @@ const ProfileAbout: FC = () => {
     const [ genderSelectorActive, setGenderSelectorActive ] = useState(true);
     const { Country, Gender, Login} = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
-    const loginProfile = window.location.pathname.slice(9);
+    const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
     
     const { getCountries, getStatistic } = useProfileAction();
 
@@ -42,7 +42,7 @@ const ProfileAbout: FC = () => {
                     <div className={s.user__info}>
                         {
                             userLogin !== loginProfile ?
-                                <p className={s.address}>{Country ? Country : 'Не выбран'}</p> :
+                                <p className={s.address__text}>{Country ? Country : 'Не выбран'}</p> :
                                 <CountrySelector
                                     countrySelectorActive={countrySelectorActive}
                                     setCountrySelectorActive={setCountrySelectorActive}
@@ -52,7 +52,7 @@ const ProfileAbout: FC = () => {
                         }
                         {
                             userLogin !== loginProfile ?
-                            <p className={s.gender}>{Gender ? Gender : 'Не выбран'}</p> :
+                            <p className={s.gender__text}>{Gender ? Gender : 'Не выбран'}</p> :
                                 <GenderSelector 
                                     genderSelectorActive={genderSelectorActive} 
                                     countrySelectorActive={countrySelectorActive} 

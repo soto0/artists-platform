@@ -4,6 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useProfileAction } from '../../../../../hooks/useActions';
+import Avatar from './../../../../../assets/images/avatar.svg';
 
 interface CommentsProps {
     userLogin: string | undefined;
@@ -52,7 +53,7 @@ const Comments: FC<CommentsProps> = (props) => {
                     Comments?.map((comment: any) => {
                         return (
                             <div className={s.comment}>
-                                <img src={comment.avatar} className={s.comment__avatar} />
+                                <img src={comment.avatar ? comment.avatar : Avatar} className={s.comment__avatar} />
                                 <div className={s.comment__body}>
                                     <div className={s.comment__top}>
                                         <p className={s.comment__name}>{comment.login}</p>

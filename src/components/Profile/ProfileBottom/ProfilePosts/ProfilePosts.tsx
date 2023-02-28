@@ -19,9 +19,7 @@ const ProfilePosts: FC = () => {
     const { Avatar, Posts } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const { getPosts } = useProfileAction();
-    const loginProfile = window.location.pathname.slice(9);
-
-    const userLoginText = userLogin + '/Posts';
+    const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
 
     const validationSchema = yup.object().shape({
@@ -32,7 +30,7 @@ const ProfilePosts: FC = () => {
     return (
         <div className={s.posts__block}>
             {
-                userLoginText !== loginProfile ?
+                userLogin !== loginProfile ?
                     undefined :
                     <Formik
                         initialValues={{ postTitle: '', postText: '' }}
