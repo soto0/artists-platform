@@ -20,7 +20,7 @@ const NewPosts: FC = () => {
                     {
                         NewPosts.map((post: any) => {
                             return (
-                                <Post Avatar={post.avatar} postTitle={post.postTitle} Name={post.login} postDate={post.postDate} postText={post.postText} />
+                                <Post Avatar={post.avatar} postTitle={post.postTitle} Name={post.login} postDate={post.postDate} id={post.id} postText={post.postText} />
                             )
                         })
                     }

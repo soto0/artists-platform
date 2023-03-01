@@ -1,3 +1,4 @@
+import { PostReducer } from './Post';
 import { HeaderReducer } from './Header';
 import { ArtworkReducer } from './Artwork';
 import { CategoryReducer } from './Category';
@@ -19,6 +20,7 @@ export const rootReducer = combineReducers({
     New: NewReducer,
     Category: CategoryReducer,
     Artwork: ArtworkReducer,
+    Post: PostReducer,
     Header: HeaderReducer
 });
 

@@ -76,7 +76,7 @@ const ProfilePosts: FC = () => {
                 {
                     Posts?.map((post: any) => {
                         return (
-                            <Post Avatar={post.avatar} Name={post.profile} postDate={post.postDate} postTitle={post.postTitle} postText={post.postText} />
+                            <Post Avatar={post.avatar} Name={post.profile} id={post.id} postDate={post.postDate} postTitle={post.postTitle} postText={post.postText} />
                         )
                     })
                 }

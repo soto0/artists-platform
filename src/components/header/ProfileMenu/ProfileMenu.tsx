@@ -26,8 +26,6 @@ const ProfileMenu: FC<ProfileMenuProps> = (props) => {
                     <Link to=''>Новые посты</Link>
                 </li>
                 <li className={s.profile__menu_item}>
-                    <Link to=''>Сообщества</Link></li>
-                <li className={s.profile__menu_item}>
                     <Link to=''>Художники</Link>
                 </li>
                 <li className={s.profile__menu_item}>

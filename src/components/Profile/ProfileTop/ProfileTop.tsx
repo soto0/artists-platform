@@ -51,9 +51,6 @@ const ProfileTop: FC = () => {
                                 <Link to=''>Подписчики <span>0</span></Link>
                             </li>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Сообщества <span>0</span></Link>
-                            </li>
-                            <li className={s.profile__top_info_item}>
                                 <Link to=''>Избранное <span>0</span></Link>
                             </li>
                         </ul>
