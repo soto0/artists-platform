@@ -10,6 +10,8 @@ import * as CategoryActionCreators from './../redux/action-creators/Category';
 import * as ArtworkActionCreators from './../redux/action-creators/Artwork';
 import * as PostActionCreators from './../redux/action-creators/Post';
 import * as HeaderActionCreators from './../redux/action-creators/Header';
+import * as FavoriteActionCreators from './../redux/action-creators/Favorite';
+import * as LikeActionCreators from './../redux/action-creators/Like';
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -59,4 +61,14 @@ export const useHeaderAction = () => {
 export const usePostAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(PostActionCreators, dispatch);
-}
+};
+
+export const useFavoriteAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(FavoriteActionCreators, dispatch);
+};
+
+export const useLikeAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(LikeActionCreators, dispatch);
+};

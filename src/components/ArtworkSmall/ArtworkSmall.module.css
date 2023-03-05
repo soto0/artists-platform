@@ -68,24 +68,3 @@
     border-radius: 10px;
     object-fit: cover;
 }
-
-.down__right {
-    margin-right: 40px;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.down__right p {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    gap: 5px;
-    color: white;
-}
-
-.icon {
-    width: 20px;
-    transition: all 0.2s;
-}

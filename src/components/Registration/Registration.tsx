@@ -25,7 +25,8 @@ const Registration: FC = () => {
                                 { id: values.login, login: values.login, email: values.email, password: values.password }).then(() => {
                                     axios.post('http://localhost:3001/Profile/',
                                         { id: values.login, login: values.login, largePhoto: '', avatar: '' },
-                                        { withCredentials: true });
+                                        { withCredentials: true }
+                                    );
 
                                     navigate('/Login');
                                 }

@@ -20,14 +20,30 @@
     align-items: center;
 }
 
+.artwork__top_info svg,
 .artwork__top_info img {
-    height: 25px;
+    height: 22px;
     margin-right: 10px;
 }
 
+.favorite {
+    fill: #43EF60;
+    stroke: black;
+}
+.favorite span {
+    margin-top: 3px;
+}
 .like {
     margin-left: 20px;
     cursor: pointer;
+    stroke: white;
+}
+
+.like_active {
+    margin-left: 20px;
+    cursor: pointer;
+    fill: #43EF60;
+    stroke: black;
 }
 .comment__icon {
     margin-left: auto;
@@ -164,6 +180,15 @@
     object-fit: cover;
 }
 
+.like__block {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.like__block p {
+    color: white;
+    margin-top: 3px;
+}
 
 @media screen and (max-width: 460px) {
     .artwork__top_info span {

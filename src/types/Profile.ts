@@ -1,16 +1,18 @@
 export interface ProfileState {
-    LargePhoto: string,
-    Avatar: string,
     Artworks: [],
     Comments: [],
+    Posts: [],
+    FavoriteArtworks: [],
     Countries: [] | undefined,
+    LargePhoto: string,
+    Avatar: string,
     Country: string | undefined,
     Gender: string | undefined,
     Bio: string | undefined,
-    Posts: [],
     Login: string | undefined,
     PostsStatistics: number,
-    ArtworksStatistic: number
+    ArtworksStatistic: number,
+    FavoritesStatistic: number
 };
 
 export enum ProfileTypes {
@@ -19,7 +21,8 @@ export enum ProfileTypes {
     GET_COMMENTS = 'GET_COMMENTS',
     GET_COUNTRIES = 'GET_COUNTRIES',
     GET_POSTS = 'GET_POSTS',
-    GET_STATISTIC = 'GET_STATISTIC'
+    GET_STATISTIC = 'GET_STATISTIC',
+    GET_FAVORITES = 'GET_FAVORITES'
 };
 
 interface getProfileData {
@@ -56,9 +59,15 @@ interface  getStatistic {
     type: ProfileTypes.GET_STATISTIC;
     postsStatistic: number;
     artworksStatistic: number;
+    favoritesStatistic: number
 }
 
-export type ProfileAction = getProfileData | getArtworks | getComments | getCountries | getPosts | getStatistic;
+interface getFavorites {
+    type: ProfileTypes.GET_FAVORITES,
+    favoriteArtworks: []
+}
+
+export type ProfileAction = getProfileData | getArtworks | getComments | getCountries | getPosts | getStatistic | getFavorites;
 
 export interface PopupProps {
     popupActive: boolean;

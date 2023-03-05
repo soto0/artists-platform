@@ -43,9 +43,15 @@ export const getStatistic = (userLogin: string | undefined) => {
         const PostsStatisticsResponse = await axios.get('http://localhost:3001/Posts?login=' + userLogin);
         // const SubscribersStatisticsResponse = await axios.get('http://localhost:3001/Subcsribers?login=' + userLogin);
         // const SubscriptionsStatisticsResponse = await axios.get('http://localhost:30001/Subscriptions?login=' + userLogin);
-        // const CommunityStatisticsResponse = await axios.get('http://localhost:3001/Community?login=' + userLogin);
         const ArtworksStatisticResponse = await axios.get('http://localhost:3001/Artworks?login=' + userLogin);
-        // const FavoritesStatisticResponse = await axios.get('http://localhost:3001/Favorites?login=' + userLogin);
-        dispatch({ type: ProfileTypes.GET_STATISTIC, postsStatistic: PostsStatisticsResponse.data.length, artworksStatistic: ArtworksStatisticResponse.data.length })
+        const FavoritesStatisticResponse = await axios.get('http://localhost:3001/FavoriteArtworks?userLogin=' + userLogin);
+        dispatch({ type: ProfileTypes.GET_STATISTIC, postsStatistic: PostsStatisticsResponse.data.length, artworksStatistic: ArtworksStatisticResponse.data.length, favoritesStatistic: FavoritesStatisticResponse.data.length  })
+    }
+}
+
+export const getFavorites = (userLogin: string | undefined) => {
+    return async (dispatch: Dispatch<ProfileAction>) => {
+        const response = await axios.get('http://localhost:3001/FavoriteArtworks?userLogin=' + userLogin);
+        dispatch({type: ProfileTypes.GET_FAVORITES, favoriteArtworks: response.data });
     }
 }

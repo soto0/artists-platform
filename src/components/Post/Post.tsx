@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import s from './Post.module.css';
 import avatar from './../../assets/images/avatar.svg';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import Comments from '../Comments/Commets';
+import Comments from '../Comments/Comments';
 import { usePostAction } from '../../hooks/useActions';
 
 interface PostProps {
