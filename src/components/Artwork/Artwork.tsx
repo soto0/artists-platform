@@ -8,6 +8,7 @@ import Comments from '../Comments/Comments';
 import FavoriteToggle from './FavoriteToggle/FavoriteToggle';
 import LikeToggle from './LikeToggle/LikeToggle';
 import FollowToggle from './../FollowToggle/FollowToggle';
+import { Link } from 'react-router-dom';
 
 const Artwork: FC = () => {
     const { getArtwork } = useArtworkAction();
@@ -50,20 +51,22 @@ const Artwork: FC = () => {
                         />
                         <p className={s.comment__icon}>
                             <img src={comment} alt={'comment'} />
-                            <span>Комментировать</span>
+                            <a href={'#comments'}>Комментировать</a>
                         </p>
                     </div>
                 </div>
                 <div className={s.artwork__bottom}>
                     <div className={s.artwork__profile}>
-                        <img src={Artwork.avatar ? Artwork.avatar : Avatar} alt={'avatar'} className={s.avatar} />
+                        <Link to={'/Profile/' + Artwork.login}>
+                            <img src={Artwork.avatar ? Artwork.avatar : Avatar} alt={'avatar'} className={s.avatar} />
+                        </Link>
                         <div className={s.artwork__text}>
                             <p className={s.artwork__title}>{Artwork.artworkName}</p>
                             <p className={s.artwork__profile_name}>Автор: {Artwork.login}</p>
                         </div>
                         <FollowToggle UserLogin={userLogin} Item={Artwork} User={Artwork.login} GetSubscription={getSubscription} />
                     </div>
-                    <div className={s.comments__block}>
+                    <div className={s.comments__block} id={'comments'} >
                         <Comments userLogin={userLogin} commentId={Artwork.id} dataName={'ArtworkComments'} comments={ArtworkComments} />
                     </div>
                 </div>

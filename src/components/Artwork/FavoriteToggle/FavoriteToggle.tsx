@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import s from './../Artwork.module.css';
 
@@ -13,9 +14,12 @@ interface FavoriteProps {
 
 const FavoriteToggle: FC<FavoriteProps> = (props) => {
     const { FavoriteArtwork, FavoriteArtworkCount } = useTypedSelector(state => state.Favorite);
+    const navigate = useNavigate();
     
     const FavoriteArtworkToggle = async () => {
-        if (!FavoriteArtwork?.favorite) {
+        if (!props.UserLogin) {
+            navigate('/Login');
+        } else if (!FavoriteArtwork?.favorite) {
             await axios.post('http://localhost:3001/FavoriteArtworks', 
                 {   
                     artworkId: props.ArtworkId, 

@@ -34,7 +34,7 @@ const ProfileArtWorks: FC = () => {
                 {
                     Artworks?.map((artwork: any) => {
                         return (
-                            <Artwork name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
+                            <Artwork id={artwork.id} name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
                         )
                     })
                 }

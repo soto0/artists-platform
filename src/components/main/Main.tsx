@@ -7,7 +7,7 @@ const Main: FC = () => {
         <section className={s.main}>
             <div className={s.main__left}>
                 <h1 className={s.title}>Платформа для художников</h1>
-                <p className={s.text}>Платформа, где вы можете общаться о рисовании и показать другим свою работу. и получить обратную связь.</p>
+                <p className={s.text}>Платформа, где вы можете общаться о рисовании и показать другим свою работу. И получить обратную связь.</p>
             </div>
             <div className={s.main__right}>
                 <img src={Art} alt={'art'} className={s.art} />

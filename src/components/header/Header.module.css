@@ -195,13 +195,14 @@ header {
     }
     .navigation_active {
         width: 100%;
-        margin-top: 430px;
+        margin-top: 464px;
         margin-left: 0px;
         left: 0;
     }
     .navigation__list {
+        margin-left: 0;
         text-align: center;
-        padding-bottom: 139px;
+        padding-bottom: 175px;
     }
     .login__block {
         position: absolute;
@@ -219,7 +220,7 @@ header {
     .login__block_active {
         display: flex;
         position: absolute;
-        margin-top: 580px;
+        margin-top: 655px;
         z-index: 1;
         opacity: 1;
         flex-direction: column;

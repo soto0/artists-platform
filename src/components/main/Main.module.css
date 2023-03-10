@@ -6,6 +6,7 @@
 
 .main__left {
     padding-top: 100px;
+    padding-bottom: 50px;
 }
 .title {
     animation: toRight 1s;

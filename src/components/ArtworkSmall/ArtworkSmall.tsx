@@ -19,7 +19,9 @@ const ArtworkSmall: FC<ArtworkSmallProps> = (props) => {
             </Link>
             <p className={s.title}>{props.artworkName}</p>
             <div className={s.artwork__down}>
-                <img src={props.avatar ? props.avatar : avatar} alt={'avatar'} className={s.avatar} />
+                <Link to={'/Profile/' + props.name}>
+                    <img src={props.avatar ? props.avatar : avatar} alt={'avatar'} className={s.avatar} />
+                </Link>
                 <p className={s.name}>{props.name}</p>
                 <div className={s.down__right}>
                 </div>

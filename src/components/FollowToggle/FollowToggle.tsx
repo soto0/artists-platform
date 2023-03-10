@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useProfileAction } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import s from './FollowToggle.module.css';
@@ -15,9 +16,12 @@ interface FollowProps {
 const FollowToggle: FC<FollowProps> = (props) => {
     const { Subscriptions } = useTypedSelector(state => state.Subscriptions);
     const { getStatistic } = useProfileAction();
+    const navigate = useNavigate();
 
     const FollowToggle = async () => {
-        if (!Subscriptions?.follow) {
+        if (!props.UserLogin) {
+            navigate('/Login');
+        } else if (!Subscriptions?.follow) {
             await axios.post('http://localhost:3001/Subscriptions', { userLogin: props.UserLogin, user: props.User, follow: true });
             props.GetSubscription(props.UserLogin, props.User);
         } else if (Subscriptions.follow === false && Subscriptions.userLogin !== props.UserLogin) {

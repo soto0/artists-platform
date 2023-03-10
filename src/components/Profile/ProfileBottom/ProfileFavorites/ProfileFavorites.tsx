@@ -20,7 +20,7 @@ const ProfileFavorites: FC = () => {
                 {
                     FavoriteArtworks?.map((favorite: any) => {
                         return (
-                            <ArtworkSmall name={favorite.favoriteArtworkAuthor} artworkName={favorite.favoriteArtworkName} artworkImage={favorite.FavoriteArtworkImage} avatar={favorite.favoriteArtworkAuthorAvatar} />
+                            <ArtworkSmall id={favorite.id} name={favorite.favoriteArtworkAuthor} artworkName={favorite.favoriteArtworkName} artworkImage={favorite.FavoriteArtworkImage} avatar={favorite.favoriteArtworkAuthorAvatar} />
                         )
                     })
                 }

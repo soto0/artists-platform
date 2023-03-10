@@ -6,7 +6,7 @@ import avatar from './../../../assets/images/avatar.svg';
 interface ProfileMenuProps {
     userLogin: any,
     profileMenuActive: boolean
-}
+};
 
 const ProfileMenu: FC<ProfileMenuProps> = (props) => {
     return (
@@ -20,16 +20,13 @@ const ProfileMenu: FC<ProfileMenuProps> = (props) => {
             </Link>
             <ul className={s.profile__menu_list}>
                 <li className={s.profile__menu_item}>
-                    <Link to=''>Подписки</Link>
+                    <Link to='NewArtworks'>Новые работы</Link>
                 </li>
                 <li className={s.profile__menu_item}>
-                    <Link to=''>Новые посты</Link>
+                    <Link to='NewPosts'>Новые посты</Link>
                 </li>
                 <li className={s.profile__menu_item}>
-                    <Link to=''>Художники</Link>
-                </li>
-                <li className={s.profile__menu_item}>
-                    <Link to=''>Настройки</Link>
+                    <Link to='Users'>Пользователи</Link>
                 </li>
                 <li className={s.profile__menu_item}>
                     <button className={s.profile__menu_exit}>Выйти</button>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { FC } from 'react';
 import s from './../Artwork.module.css';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { useNavigate } from 'react-router-dom';
 
 
 interface LikeToggleProps {
@@ -13,9 +14,12 @@ interface LikeToggleProps {
 
 const LikeToggle: FC<LikeToggleProps> = (props) => {
     const { LikeArtwork, LikeArtworkCount } = useTypedSelector(state => state.Like);
+    const navigate = useNavigate();
     
     const LikeArtworkToggle = async () => {
-        if (!LikeArtwork?.like) {
+        if (!props.UserLogin) {
+            navigate('/Login');
+        } else if (!LikeArtwork?.like) {
             await axios.post('http://localhost:3001/LikeArtworks', { artworkId: props.ArtworkId, userLogin: props.UserLogin, like: true });
 
             props.GetLikeArtwork(props.ArtworkId, props.UserLogin);

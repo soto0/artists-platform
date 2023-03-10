@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Footer from './components/footer/Footer';
+import Footer from './components/Footer/Footer';
 import Header from './components/header/Header';
 import ProfileAbout from './components/Profile/ProfileBottom/ProfileAbout/ProfileAbout';
 import ProfileArtWorks from './components/Profile/ProfileBottom/ProfileArtWorks/ProfileArtWorks';

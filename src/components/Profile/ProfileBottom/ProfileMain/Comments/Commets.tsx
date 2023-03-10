@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useProfileAction } from '../../../../../hooks/useActions';
 import Avatar from './../../../../../assets/images/avatar.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface CommentsProps {
     userLogin: string | undefined;
@@ -22,23 +23,28 @@ const Comments: FC<CommentsProps> = (props) => {
     const { Comments } = useTypedSelector(state => state.Profile);
     const { getProfileData } = useProfileAction();
     const loginProfile = window.location.pathname.slice(9);
+    const navigate = useNavigate();
 
     return (
         <div className={s.comments}>
             <Formik
                 initialValues={{ comment: '' }}
                 onSubmit={async values => {
-                    const today = new Date();
+                    if (!props.userLogin) {
+                        navigate('/Login')
+                    } else {
+                        const today = new Date();
 
-                    const options: Date = { weekday: "long", month: "long", day: "numeric" };
+                        const options: Date = { weekday: "long", month: "long", day: "numeric" };
 
-                    const now = today.toLocaleString('ru-Ru', options);
+                        const now = today.toLocaleString('ru-Ru', options);
 
-                    await axios.post('http://localhost:3001/Comments',
-                        { commentText: values.comment, login: props.Login, avatar: props.Avatar, commentDate: now, profile: loginProfile},
-                        { withCredentials: true })
+                        await axios.post('http://localhost:3001/Comments',
+                            { commentText: values.comment, login: props.Login, avatar: props.Avatar, commentDate: now, profile: loginProfile },
+                            { withCredentials: true })
 
-                    getProfileData(props.userLogin);
+                        getProfileData(props.userLogin);
+                    }
                 }}    
             >
                 {({ values, isValid, handleBlur, handleChange }) => (

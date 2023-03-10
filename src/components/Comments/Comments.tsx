@@ -4,6 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useArtworkAction, usePostAction } from '../../hooks/useActions';
+import { useNavigate } from 'react-router-dom';
 
 interface CommentsProps {
     userLogin: string | undefined;
@@ -21,6 +22,7 @@ type Date = {
 const Comments: FC<CommentsProps> = (props) => {
     const { getArtwork } = useArtworkAction();
     const { getPost } = usePostAction();
+    const navigate = useNavigate();
     const { Avatar } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
 
@@ -29,22 +31,26 @@ const Comments: FC<CommentsProps> = (props) => {
         <div className={s.comments}>
             <Formik
                 initialValues={{ comment: '' }}
-                onSubmit={async (values,  { resetForm }) => {
-                    const today = new Date();
-                    const options: Date = { weekday: "long", month: "long", day: "numeric" };
-                    const now = today.toLocaleString('ru-Ru', options);
+                onSubmit={async (values, { resetForm }) => {
+                    if (!userLogin) {
+                        navigate('/Login');
+                    } else {
+                        const today = new Date();
+                        const options: Date = { weekday: "long", month: "long", day: "numeric" };
+                        const now = today.toLocaleString('ru-Ru', options);
 
-                    await axios.post('http://localhost:3001/' + props.dataName,
-                        { commentText: values.comment, avatar: Avatar, commentDate: now, artworkId: props.commentId, login: userLogin },
-                        { withCredentials: true });
-                    
-                    if (props.dataName === 'ArtworkComments') {
-                        getArtwork(props.commentId);
-                    } else if (props.dataName === 'PostComments') {
-                        getPost();
-                    };
-                    resetForm();
-                }}    
+                        await axios.post('http://localhost:3001/' + props.dataName,
+                            { commentText: values.comment, avatar: Avatar, commentDate: now, artworkId: props.commentId, login: userLogin },
+                            { withCredentials: true });
+
+                        if (props.dataName === 'ArtworkComments') {
+                            getArtwork(props.commentId);
+                        } else if (props.dataName === 'PostComments') {
+                            getPost();
+                        };
+                        resetForm();
+                    }
+                }}
             >
                 {({ values, isValid, handleBlur, handleChange }) => (
                     <Form>
