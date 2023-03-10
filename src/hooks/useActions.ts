@@ -12,6 +12,7 @@ import * as PostActionCreators from './../redux/action-creators/Post';
 import * as HeaderActionCreators from './../redux/action-creators/Header';
 import * as FavoriteActionCreators from './../redux/action-creators/Favorite';
 import * as LikeActionCreators from './../redux/action-creators/Like';
+import * as SubscriptionsActionCreators from './../redux/action-creators/Subscription';
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -71,4 +72,9 @@ export const useFavoriteAction = () => {
 export const useLikeAction = () => {
     const dispatch = useDispatch();
     return bindActionCreators(LikeActionCreators, dispatch);
+};
+
+export const useSubscriptionsAction = () => {
+    const dispatch = useDispatch();
+    return bindActionCreators(SubscriptionsActionCreators, dispatch);
 };

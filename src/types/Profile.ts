@@ -12,7 +12,8 @@ export interface ProfileState {
     Login: string | undefined,
     PostsStatistics: number,
     ArtworksStatistic: number,
-    FavoritesStatistic: number
+    FavoritesStatistic: number,
+    SubscriptionsStatistic: number
 };
 
 export enum ProfileTypes {
@@ -59,7 +60,8 @@ interface  getStatistic {
     type: ProfileTypes.GET_STATISTIC;
     postsStatistic: number;
     artworksStatistic: number;
-    favoritesStatistic: number
+    favoritesStatistic: number;
+    subscriptionsStatistic: number
 }
 
 interface getFavorites {

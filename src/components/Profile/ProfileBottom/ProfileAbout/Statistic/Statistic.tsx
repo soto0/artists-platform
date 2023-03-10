@@ -3,7 +3,7 @@ import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import s from './Statistic.module.css';
 
 const Statistic: FC = () => {
-    const { PostsStatistics, ArtworksStatistic, FavoritesStatistic } = useTypedSelector(state => state.Profile);
+    const { PostsStatistics, ArtworksStatistic, FavoritesStatistic, SubscriptionsStatistic } = useTypedSelector(state => state.Profile);
     
     return (
         <div id={'statistics'} className={s.statistics}>
@@ -15,11 +15,7 @@ const Statistic: FC = () => {
                 </div>
                 <div className={s.statistic__block}>
                     <h4 className={s.statistic__title}>Подписчики</h4>
-                    <p className={s.statistic__count}>5</p>
-                </div>
-                <div className={s.statistic__block}>
-                    <h4 className={s.statistic__title}>Подписки</h4>
-                    <p className={s.statistic__count}>5</p>
+                    <p className={s.statistic__count}>{SubscriptionsStatistic}</p>
                 </div>
                 <div className={s.statistic__block}>
                     <h4 className={s.statistic__title}>Работы</h4>

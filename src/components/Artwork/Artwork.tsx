@@ -1,16 +1,18 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import s from './Artwork.module.css';
 import comment from './../../assets/images/comment.svg';
-import { useArtworkAction, useFavoriteAction, useLikeAction } from '../../hooks/useActions';
+import { useArtworkAction, useFavoriteAction, useLikeAction, useSubscriptionsAction } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Avatar from './../../assets/images/avatar.svg';
 import Comments from '../Comments/Comments';
 import FavoriteToggle from './FavoriteToggle/FavoriteToggle';
 import LikeToggle from './LikeToggle/LikeToggle';
+import FollowToggle from './../FollowToggle/FollowToggle';
 
 const Artwork: FC = () => {
     const { getArtwork } = useArtworkAction();
     const { getFavoriteArtwork, getFavoriteArtworkCount } = useFavoriteAction();
+    const { getSubscription } = useSubscriptionsAction();
     const { getLikeArtwork, getLikeArtworkCount } = useLikeAction();
     const ArtworkId = window.location.pathname.slice(9);
     const { Artwork } = useTypedSelector(state => state.Artwork);
@@ -23,7 +25,9 @@ const Artwork: FC = () => {
         getLikeArtwork(ArtworkId, userLogin);
         getFavoriteArtworkCount(ArtworkId);
         getLikeArtworkCount(ArtworkId);
-    }, []);
+        getSubscription(userLogin, Artwork.login);
+    }, [userLogin, ArtworkId, Artwork.login]);
+
 
     return (
         <main>
@@ -57,12 +61,9 @@ const Artwork: FC = () => {
                             <p className={s.artwork__title}>{Artwork.artworkName}</p>
                             <p className={s.artwork__profile_name}>Автор: {Artwork.login}</p>
                         </div>
-                        {
-                            userLogin !== Artwork.login ?
-                                <button className={s.follow}>Отслеживать</button> : undefined
-                        }
+                        <FollowToggle UserLogin={userLogin} Item={Artwork} User={Artwork.login} GetSubscription={getSubscription} />
                     </div>
-                    <div className={s.сomments__block}>
+                    <div className={s.comments__block}>
                         <Comments userLogin={userLogin} commentId={Artwork.id} dataName={'ArtworkComments'} comments={ArtworkComments} />
                     </div>
                 </div>

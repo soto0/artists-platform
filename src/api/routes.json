@@ -1,5 +1,6 @@
 {
   "/FavoriteArtworks/DeleteByArtworkId/:artworkId": "/FavoriteArtworks?artworkId=:artworkId",
-  "/LikeArtworks/DeleteByArtworkId/:likeId": "/LikeArtworks?likeId=:likeId"
+  "/LikeArtworks/DeleteByArtworkId/:likeId": "/LikeArtworks?likeId=:likeId",
+  "/Subscription/DeleteByFollowId/:subscriptionId": "/Subscription?subscriptionId=:subscriptionId"
 }
   

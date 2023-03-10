@@ -11,7 +11,7 @@ import { useProfileAction } from '../../../hooks/useActions';
 import AvatarPopup from './AvatarPopup/AvatarPopup';
 
 const ProfileTop: FC = () => {
-    const { FavoritesStatistic } = useTypedSelector(state => state.Profile);
+    const { FavoritesStatistic, SubscriptionsStatistic } = useTypedSelector(state => state.Profile);
     const [popupActive, setPopupActive] = useState(true);
     const { getProfileData } = useProfileAction();
     const { userLogin } = useTypedSelector(state => state.Login);
@@ -28,8 +28,6 @@ const ProfileTop: FC = () => {
         } else {
             getProfileData(userLogin);
         }
-
-        
     }, []);
 
     return (
@@ -51,7 +49,7 @@ const ProfileTop: FC = () => {
                         <p className={s.profile__top_info_name}>{Login}</p>
                         <ul className={s.profile__top_info_list}>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Подписчики <span>0</span></Link>
+                                <Link to=''>Подписчики {SubscriptionsStatistic}</Link>
                             </li>
                             <li className={s.profile__top_info_item}>
                                 <Link to=''>Избранное {FavoritesStatistic}</Link>

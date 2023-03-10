@@ -1,0 +1,11 @@
+.follow {
+    padding: 8px;
+    border-radius: 5px;
+    color: #43EF60;
+    font-size: 16px;
+    border: solid 1px #43EF60;
+}
+
+.button__block {
+    margin-left: auto;
+}

@@ -1,3 +1,4 @@
+import { SubscriptionsReducer } from './Follow';
 import { LikeReducer } from './Like';
 import { FavoriteReducer } from './Favorite';
 import { PostReducer } from './Post';
@@ -25,7 +26,8 @@ export const rootReducer = combineReducers({
     Post: PostReducer,
     Header: HeaderReducer,
     Favorite: FavoriteReducer,
-    Like: LikeReducer
+    Like: LikeReducer,
+    Subscriptions: SubscriptionsReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>

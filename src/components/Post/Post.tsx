@@ -3,7 +3,8 @@ import s from './Post.module.css';
 import avatar from './../../assets/images/avatar.svg';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Comments from '../Comments/Comments';
-import { usePostAction } from '../../hooks/useActions';
+import { usePostAction, useSubscriptionsAction } from '../../hooks/useActions';
+import FollowToggle from '../FollowToggle/FollowToggle';
 
 interface PostProps {
     Avatar: string;
@@ -18,11 +19,13 @@ const Post: FC<PostProps> = (props) => {
     const { getPost } = usePostAction();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { PostComments } = useTypedSelector(state => state.Post);
+    const { getSubscription } = useSubscriptionsAction();
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
     useEffect(() => {
         getPost();
-    }, []);
+        getSubscription(userLogin, props.Name);
+    }, [props.Name]);
 
     return (
         <div className={s.post}>
@@ -34,7 +37,7 @@ const Post: FC<PostProps> = (props) => {
                 </div>
                 {
                     userLogin !== loginProfile ?
-                        <button className={s.follow}>Отслеживать</button> :
+                        <FollowToggle UserLogin={userLogin} Item={props.Name} User={props.Name} GetSubscription={getSubscription} /> :
                         undefined
                 }
             </div>

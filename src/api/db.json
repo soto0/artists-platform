@@ -1165,5 +1165,19 @@
       "like": true,
       "id": 2
     }
+  ],
+  "Subscriptions": [
+    {
+      "userLogin": "sotto0",
+      "user": "test",
+      "follow": true,
+      "id": 2
+    },
+    {
+      "userLogin": "test",
+      "user": "sotto0",
+      "follow": true,
+      "id": 3
+    }
   ]
 }

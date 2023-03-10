@@ -41,11 +41,16 @@ export const getPosts = (Login: string | undefined) => {
 export const getStatistic = (userLogin: string | undefined) => {
     return async (dispatch: Dispatch<ProfileAction>) => {
         const PostsStatisticsResponse = await axios.get('http://localhost:3001/Posts?login=' + userLogin);
-        // const SubscribersStatisticsResponse = await axios.get('http://localhost:3001/Subcsribers?login=' + userLogin);
-        // const SubscriptionsStatisticsResponse = await axios.get('http://localhost:30001/Subscriptions?login=' + userLogin);
+        const SubscriptionsStatisticResponse = await axios.get('http://localhost:3001/Subscriptions?userLogin=' + userLogin);
         const ArtworksStatisticResponse = await axios.get('http://localhost:3001/Artworks?login=' + userLogin);
         const FavoritesStatisticResponse = await axios.get('http://localhost:3001/FavoriteArtworks?userLogin=' + userLogin);
-        dispatch({ type: ProfileTypes.GET_STATISTIC, postsStatistic: PostsStatisticsResponse.data.length, artworksStatistic: ArtworksStatisticResponse.data.length, favoritesStatistic: FavoritesStatisticResponse.data.length  })
+        dispatch({ 
+            type: ProfileTypes.GET_STATISTIC, 
+            postsStatistic: PostsStatisticsResponse.data.length, 
+            artworksStatistic: ArtworksStatisticResponse.data.length, 
+            favoritesStatistic: FavoritesStatisticResponse.data.length, 
+            subscriptionsStatistic: SubscriptionsStatisticResponse.data.length 
+        })
     }
 }
 

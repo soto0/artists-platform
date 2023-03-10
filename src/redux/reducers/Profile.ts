@@ -14,7 +14,8 @@ const initialState: ProfileState = {
     Login: "",
     PostsStatistics: 0,
     ArtworksStatistic: 0,
-    FavoritesStatistic: 0
+    FavoritesStatistic: 0,
+    SubscriptionsStatistic: 0
 };
 
 export const ProfileReducer = (state = initialState, action: ProfileAction): ProfileState => {
@@ -30,7 +31,13 @@ export const ProfileReducer = (state = initialState, action: ProfileAction): Pro
         case ProfileTypes.GET_POSTS:
             return { ...state, Posts: action.posts }
         case ProfileTypes.GET_STATISTIC:
-            return { ...state, PostsStatistics: action.postsStatistic, ArtworksStatistic: action.artworksStatistic, FavoritesStatistic: action.favoritesStatistic }
+            return { 
+                ...state, 
+                PostsStatistics: action.postsStatistic, 
+                ArtworksStatistic: action.artworksStatistic, 
+                FavoritesStatistic: action.favoritesStatistic, 
+                SubscriptionsStatistic: action.subscriptionsStatistic 
+            }
         case ProfileTypes.GET_FAVORITES:
             return { ...state, FavoriteArtworks: action.favoriteArtworks }
         default: 

@@ -15,12 +15,11 @@ const ProfileAbout: FC = () => {
     const { Country, Gender, Login} = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
-    
     const { getCountries, getStatistic } = useProfileAction();
 
     useEffect(() => {
         getCountries();
-        getStatistic(loginProfile)
+        getStatistic(loginProfile);
     }, []);
 
     return (

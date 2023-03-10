@@ -73,19 +73,11 @@
     font-size: 25px;
 }
 
-.follow {
-    margin-left: auto;
-    padding: 8px;
-    border-radius: 5px;
-    color: #43EF60;
-    font-size: 16px;
-    border: solid 1px #43EF60;
-}
 .artwork__bottom {
     margin-bottom: 50px;
 }
 
-.сomments__block {
+.comments__block {
     margin-top: 100px;
 }
 
