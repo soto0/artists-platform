@@ -34,7 +34,7 @@ export const getCountries = () => {
 export const getPosts = (Login: string | undefined) => {
     return async (dispatch: Dispatch<ProfileAction>) => {
         const response = await axios.get('http://localhost:3001/Posts?profile=' + Login);
-        dispatch({ type: ProfileTypes.GET_POSTS, posts: response.data});
+        dispatch({ type: ProfileTypes.GET_POSTS, posts: response.data.reverse() });
     };
 };
 

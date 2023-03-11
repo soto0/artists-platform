@@ -5,21 +5,25 @@ import changeIcon from './../../../assets/images/change_icon.svg';
 import profileLargeIcon from './../../../assets/images/profileLarge.jpg';
 import changeSmallIcon from './../../../assets/images/change_small_icon.svg';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { Link } from 'react-router-dom';
 import LargePhotoPopup from './LargePhotoPopup/LargePhotoPopup';
 import { useProfileAction } from '../../../hooks/useActions';
 import AvatarPopup from './AvatarPopup/AvatarPopup';
 
 const ProfileTop: FC = () => {
     const { FavoritesStatistic, SubscriptionsStatistic } = useTypedSelector(state => state.Profile);
-    const [popupActive, setPopupActive] = useState(true);
+    const [popupLargePhotoActive, setPopupLargePhotoActive] = useState(true);
+    const [avatarPopupActive, setAvatarPopupActive] = useState(true);
     const { getProfileData } = useProfileAction();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { LargePhoto, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
-    let onClickPopup = () => {
-        setPopupActive(!popupActive);
+    let onClickAvatarPopup = () => {
+        setAvatarPopupActive(!avatarPopupActive);
+    };
+
+    let onClickLargePhotoPopup = () => {
+        setPopupLargePhotoActive(!popupLargePhotoActive);
     };
 
     useEffect(() => {
@@ -33,13 +37,13 @@ const ProfileTop: FC = () => {
     return (
         <div className={s.profile__top}>
             <img src={LargePhoto === '' ? profileLargeIcon : LargePhoto} alt={'profile_large_icon'} className={s.profile__large_icon} />
-            <p className={'container'}>
+            <div className={'container'}>
                 <div className={s.profile__top_info}>
                     <img src={Avatar === '' ? avatar : Avatar} alt={'profile_small_icon'} className={s.profile_small_icon} />
                     {
                         userLogin !== loginProfile ?
                             undefined :
-                            <span className={s.change__small_icon} onClick={onClickPopup}>
+                            <span className={s.change__small_icon} onClick={onClickAvatarPopup}>
                                 <img src={changeSmallIcon} alt={'change_small_icon'} className={s.change__small_icon_after} />
                                 <p>изменить</p>
                                 <div className={s.change__small_icon_back}></div>
@@ -49,44 +53,45 @@ const ProfileTop: FC = () => {
                         <p className={s.profile__top_info_name}>{Login}</p>
                         <ul className={s.profile__top_info_list}>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Подписчики {SubscriptionsStatistic}</Link>
+                                <p>Подписчики {SubscriptionsStatistic}</p>
                             </li>
                             <li className={s.profile__top_info_item}>
-                                <Link to=''>Избранное {FavoritesStatistic}</Link>
+                                <p>Избранное {FavoritesStatistic}</p>
                             </li>
                         </ul>
                     </div>
                     {
                         userLogin !== loginProfile ?
                             undefined :
-                            <button className={s.change__large_icon} onClick={onClickPopup}>
+                            <button className={s.change__large_icon} onClick={onClickLargePhotoPopup}>
                                 <img src={changeIcon} alt={'change_icon'} className={s.change__large_icon_before} />
                                 Изменить фон
                             </button>
                     }
                 </div>
-            </p>
-            <div onClick={onClickPopup} className={popupActive ? s.popup__back : s.popup__back_active}></div>
+            </div>
             <LargePhotoPopup 
-                popupActive={popupActive} 
+                popupActive={popupLargePhotoActive} 
                 getProfileData={getProfileData} 
                 Avatar={Avatar} 
                 userLogin={userLogin} 
-                setPopupActive={setPopupActive}
+                setPopupActive={setPopupLargePhotoActive}
                 Country={Country}
                 Gender={Gender}
                 Bio={Bio}
             />
             <AvatarPopup 
-                popupActive={popupActive} 
+                popupActive={avatarPopupActive} 
                 LargePhoto={LargePhoto} 
                 getProfileData={getProfileData} 
                 userLogin={userLogin} 
-                setPopupActive={setPopupActive} 
+                setPopupActive={setAvatarPopupActive} 
                 Country={Country}
                 Gender={Gender}
                 Bio={Bio}
             />
+             <div onClick={onClickLargePhotoPopup} className={popupLargePhotoActive ? s.popup__back : s.popup__back_active}></div>
+            <div onClick={onClickAvatarPopup} className={avatarPopupActive ? s.popup__back : s.popup__back_active}></div>
         </div>
     );
 };

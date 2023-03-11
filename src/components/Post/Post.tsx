@@ -46,7 +46,7 @@ const Post: FC<PostProps> = (props) => {
                 <p className={s.post__text}>{props.postText}</p>
             </div>
             <div className={s.post__bottom}>
-                <div className={s.сomments__block}>
+                <div className={s.comments__block}>
                     <Comments userLogin={userLogin} commentId={props.id} dataName={'PostComments'} comments={PostComments} />
                 </div>
             </div>

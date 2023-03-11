@@ -5,17 +5,17 @@ import avatar from './../../../assets/images/avatar.svg';
 
 interface ProfileMenuProps {
     userLogin: any,
-    profileMenuActive: boolean
+    profileMenuActive: boolean,
+    Avatar: string
 };
 
 const ProfileMenu: FC<ProfileMenuProps> = (props) => {
     return (
         <div className={props.profileMenuActive ? s.profile__menu : s.profile__menu_active}>
             <Link to={'/Profile/' + props.userLogin} className={s.profile__menu_top}>
-                <img src={avatar} alt={'avatar-icon'} className={s.profile__menu_avatar} />
+                <img src={props.Avatar ? props.Avatar : avatar} alt={'avatar-icon'} className={s.profile__menu_avatar} />
                 <div className={s.profile__menu_text}>
                     <p className={s.profile__menu_name}>{props.userLogin}</p>
-                    <p className={s.profile__menu_status}>hello?!</p>
                 </div>
             </Link>
             <ul className={s.profile__menu_list}>

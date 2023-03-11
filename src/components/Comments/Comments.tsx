@@ -5,12 +5,13 @@ import axios from 'axios';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useArtworkAction, usePostAction } from '../../hooks/useActions';
 import { useNavigate } from 'react-router-dom';
+import UnknownAvatar from './../../assets/images/avatar.svg';
 
 interface CommentsProps {
     userLogin: string | undefined;
     commentId: number;
     dataName: string | undefined;
-    comments: []
+    comments: [],
 }
 
 type Date = { 
@@ -64,7 +65,7 @@ const Comments: FC<CommentsProps> = (props) => {
                     props.comments.filter((comment: any) => comment.artworkId === props.commentId).map((comment: any) => {
                         return (
                             <div className={s.comment}>
-                                <img src={comment.avatar ? comment.avatar : Avatar} className={s.comment__avatar} />
+                                <img src={comment.avatar ? comment.avatar : UnknownAvatar} className={s.comment__avatar} />
                                 <div className={s.comment__body}>
                                     <div className={s.comment__top}>
                                         <p className={s.comment__name}>{comment.login}</p>

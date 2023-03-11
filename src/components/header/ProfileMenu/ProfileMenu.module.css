@@ -2,7 +2,7 @@
     display: none;
     position: absolute;
     top: 0;
-    padding: 20px 0;
+    padding: 0px 0 20px 0px;
     right: 0;
     cursor: auto;
     margin-left: -400px;
@@ -10,12 +10,13 @@
     background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgb(8, 8, 8)50%, rgba(0, 0, 0, 1) 100%);
     max-width: 400px;
     margin-top: 63px;
+    
 }
 
 .profile__menu_active {
     position: absolute;
     top: 0;
-    padding: 20px 0;
+    padding: 0px 0 20px 0px;
     right: 0;
     cursor: auto;
     margin-left: -400px;
@@ -30,6 +31,7 @@
 .profile__menu_top {
     display: flex;
     width: 200px;
+    align-items: center;
     gap: 20px;
     height: 80px;
     margin: 0 20px;
@@ -52,6 +54,8 @@
 .profile__menu_avatar {
     width: 50px;
     height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
 }
 
 .profile__menu_list {

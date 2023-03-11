@@ -18,7 +18,7 @@
 
 .profile__top_info {
     z-index: 10;
-    position: absolute;
+    position: relative;
     margin-top: 200px;
     display: flex;
     width: 100%;
@@ -65,7 +65,7 @@
     color: white;
 }
 
-.profile__top_info_item a,
+.profile__top_info_item p,
 .profile__top_info_item span  {
     color: white;
     font-size: 30px;
@@ -138,14 +138,13 @@
 
 .popup__back,
 .popup__back_active {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 }
 
 .popup__back_active {
     display: flex;
-    z-index: 10;
     width: 100%;
     background-color: black;
     opacity: 0.5;

@@ -64,7 +64,7 @@ const Artwork: FC = () => {
                             <p className={s.artwork__title}>{Artwork.artworkName}</p>
                             <p className={s.artwork__profile_name}>Автор: {Artwork.login}</p>
                         </div>
-                        <FollowToggle UserLogin={userLogin} Item={Artwork} User={Artwork.login} GetSubscription={getSubscription} />
+                        {userLogin === Artwork.login ? undefined : <FollowToggle UserLogin={userLogin} Item={Artwork} User={Artwork.login} GetSubscription={getSubscription} />}
                     </div>
                     <div className={s.comments__block} id={'comments'} >
                         <Comments userLogin={userLogin} commentId={Artwork.id} dataName={'ArtworkComments'} comments={ArtworkComments} />

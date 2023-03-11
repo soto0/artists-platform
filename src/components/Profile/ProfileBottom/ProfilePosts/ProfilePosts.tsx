@@ -47,7 +47,7 @@ const ProfilePosts: FC = () => {
                             const now = today.toLocaleString('ru-Ru', options);
 
                             await axios.post('http://localhost:3001/Posts',
-                                { postTitle: values.postTitle, login: userLogin, postDate: now, postText: values.postText, avatar: Avatar },
+                                { postTitle: values.postTitle, login: userLogin, postDate: now, postText: values.postText, avatar: Avatar, profile: loginProfile },
                                 { withCredentials: true });
 
                             getPosts(userLogin);

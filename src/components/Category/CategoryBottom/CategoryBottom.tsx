@@ -13,12 +13,14 @@ const CategoryBottom: FC = () => {
         getArtworksCategory(url);
     }, [])
 
+    console.log(Artworks)
+
     return (
        <div className={s.artworks_block}>
             {
                 Artworks.map((artwork: any) => {
                     return (
-                        <ArtworkSmall name={artwork.name} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
+                        <ArtworkSmall name={artwork.login} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
                     )
                 })
             }

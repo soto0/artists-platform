@@ -18,7 +18,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
     const [artworkImage, setArtworkImage] = useState<any>();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { Avatar } = useTypedSelector(state => state.Profile);
-    const { getProfileData } = useProfileAction();
+    const { getArtworks } = useProfileAction();
     const [ category, setCategory ] = useState();
     const [ categorySelectorActive, setCategorySelectorActive ] = useState(true);
     const loginProfile = window.location.pathname.slice(9);
@@ -52,7 +52,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                             { withCredentials: true });
                     };
 
-                    getProfileData(userLogin);
+                    getArtworks(userLogin);
                     props.setArtworkPopupActive(true);
                 }}
             >

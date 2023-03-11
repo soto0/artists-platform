@@ -21,15 +21,15 @@ type Date = {
 
 const Comments: FC<CommentsProps> = (props) => {
     const { Comments } = useTypedSelector(state => state.Profile);
-    const { getProfileData } = useProfileAction();
-    const loginProfile = window.location.pathname.slice(9);
+    const { getComments } = useProfileAction();
+    const loginProfile = window.location.pathname.slice(2);
     const navigate = useNavigate();
-
+    
     return (
         <div className={s.comments}>
             <Formik
                 initialValues={{ comment: '' }}
-                onSubmit={async values => {
+                onSubmit={async (values, { resetForm }) => {
                     if (!props.userLogin) {
                         navigate('/Login')
                     } else {
@@ -43,14 +43,15 @@ const Comments: FC<CommentsProps> = (props) => {
                             { commentText: values.comment, login: props.Login, avatar: props.Avatar, commentDate: now, profile: loginProfile },
                             { withCredentials: true })
 
-                        getProfileData(props.userLogin);
+                        getComments(props.userLogin);
+                        resetForm();
                     }
                 }}    
             >
                 {({ values, isValid, handleBlur, handleChange }) => (
                     <Form>
                         <Field as={'textarea'} name={'comment'} value={values.comment} onChange={handleChange} onBlur={handleBlur}  className={s.comments__text}></Field>
-                        <button className={s.submit__comment} type={'submit'} disabled={!isValid} >Отправить комментарий</button>
+                        <button className={s.submit__comment} disabled={!isValid}>Отправить комментарий</button>
                     </Form>
                 )}
             </Formik>

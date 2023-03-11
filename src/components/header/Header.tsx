@@ -10,7 +10,6 @@ const Header: FC = () => {
     const [menuActive, setMenuActive] = useState(true);
     const [profileMenuActive, setProfileMenuActive] = useState(true);
     const { isAuth, userLogin } = useTypedSelector(state => state.Login);
-    
     const { Avatar } = useTypedSelector(state => state.Header);
 
 
@@ -62,7 +61,7 @@ const Header: FC = () => {
                                     <p className={s.profile__name}>{userLogin}</p>
                                     <img src={Avatar ? Avatar : avatar} alt={'avatar-icon'} className={s.profile__icon} />
                                 </div>
-                                <ProfileMenu profileMenuActive={profileMenuActive} userLogin={userLogin} />
+                                <ProfileMenu profileMenuActive={profileMenuActive} userLogin={userLogin} Avatar={Avatar} />
                             </div> :
                             <div className={menuActive ? s.login__block : s.login__block_active}>
                                 <Link to={'/Login'} className={s.login}>Войти</Link>
