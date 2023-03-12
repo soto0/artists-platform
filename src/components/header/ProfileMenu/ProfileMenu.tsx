@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import s from './ProfileMenu.module.css';
 import avatar from './../../../assets/images/avatar.svg';
+import { useLoginActions } from '../../../hooks/useActions';
 
 interface ProfileMenuProps {
     userLogin: any,
@@ -10,6 +11,14 @@ interface ProfileMenuProps {
 };
 
 const ProfileMenu: FC<ProfileMenuProps> = (props) => {
+    const { getExitLogin } = useLoginActions();
+    const navigate = useNavigate();
+
+    const exit = () => {
+        getExitLogin();
+        navigate('/Login');
+    };
+
     return (
         <div className={props.profileMenuActive ? s.profile__menu : s.profile__menu_active}>
             <Link to={'/Profile/' + props.userLogin} className={s.profile__menu_top}>
@@ -29,7 +38,7 @@ const ProfileMenu: FC<ProfileMenuProps> = (props) => {
                     <Link to='Users'>Пользователи</Link>
                 </li>
                 <li className={s.profile__menu_item}>
-                    <button className={s.profile__menu_exit}>Выйти</button>
+                    <button className={s.profile__menu_exit} onClick={exit}>Выйти</button>
                 </li>
             </ul>
         </div>

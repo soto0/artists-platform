@@ -140,4 +140,7 @@
     .about {
         width: 100%;
     }
+    .artworks__block div {
+        width: 100%;
+    }
 }

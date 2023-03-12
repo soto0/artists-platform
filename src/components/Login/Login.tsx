@@ -23,14 +23,14 @@ const Login: FC = () => {
             getAvatar(userLogin);
         };
     });
-
+    
     return (
         <main>
             <div className={'container'}>
                 <div className={'form__block'}>
                     <h2 className={'title'}>Вход</h2>
                     <Formik
-                        initialValues={{login: '', password: ''}}
+                        initialValues={{login: '', password: '' }}
                         validationSchema={validationSchema}
                         onSubmit={values => {
                             getUserLogin(values);

@@ -24,7 +24,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
     const loginProfile = window.location.pathname.slice(9);
 
     const validationSchema = yup.object().shape({
-        artwork_name: yup.string().required('Заполните поле'),
+        artwork_name: yup.string().required('Заполните поле')
     });
 
     const artworkReader = new FileReader();
@@ -69,7 +69,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                             <p className={'add__icon_text'}>Добавьте работу</p>
                             <Field
                                 type={'file'}
-                                name={'add_artwork'}
+                                name={'file'}
                                 onChange={(event: any) => {
                                     setArtworkImage(event.currentTarget.files[0])
                                 }}
@@ -78,7 +78,7 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                                 className={'change_icon'}
                             />
                         </label>
-                        <button className={'upload__button'} disabled={!isValid} type={'submit'}>Добавить</button>
+                        <button className={'upload__button'} disabled={!isValid || category === 'Не выбрана'} type={'submit'}>Добавить</button>
                     </Form>
                 )}
             </Formik>

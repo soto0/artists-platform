@@ -10,3 +10,9 @@ export const getUserLogin = (values: any) => {
         }
     };
 };
+
+export const getExitLogin = () => {
+    return async (dispatch: Dispatch<LoginActions>) => {
+        dispatch({ type: LoginTypes.GET_EXIT_LOGIN, login: '', password: '', id: '' })
+    }
+}

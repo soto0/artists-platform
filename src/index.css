@@ -295,6 +295,13 @@ input {
         margin-top: 50px;
         width: 100%;
     }
+    .popup_active {
+        width: 100%;
+        max-width: 94%;
+    }
+    .popup__top .title {
+        font-size: 25px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -303,5 +310,8 @@ input {
     }
     .title {
         font-size: 50px;
+    }
+    .popup__top .title {
+        font-size: 20px;
     }
 }
