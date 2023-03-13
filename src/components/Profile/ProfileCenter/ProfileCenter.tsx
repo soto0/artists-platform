@@ -9,7 +9,7 @@ const ProfileCenter: FC = () => {
         <div className={s.profile__navigation}>
             <div className={'container'}>
                 <div className={s.profile__navigation_list}>
-                    <NavLink to={`/Profile/${loginProfile}`} className={s.navigation__link}>Главная</NavLink>
+                    <NavLink to={`/Profile/${loginProfile}`}  end className={s.navigation__link}>Главная</NavLink>
                     <NavLink to={`/Profile/${loginProfile}/About`} className={s.navigation__link}>Обо мне</NavLink>
                     <NavLink to={`/Profile/${loginProfile}/Favorites`} className={s.navigation__link}>Избранное</NavLink>
                     <NavLink to={`/Profile/${loginProfile}/Artworks`} className={s.navigation__link}>Работы</NavLink>

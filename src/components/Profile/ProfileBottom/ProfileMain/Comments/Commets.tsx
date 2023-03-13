@@ -22,7 +22,7 @@ type Date = {
 const Comments: FC<CommentsProps> = (props) => {
     const { Comments } = useTypedSelector(state => state.Profile);
     const { getComments } = useActions();
-    const loginProfile = window.location.pathname.slice(2);
+    const loginProfile = window.location.pathname.slice(9);
     const navigate = useNavigate();
     
     return (
