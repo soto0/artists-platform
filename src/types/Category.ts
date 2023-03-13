@@ -22,3 +22,7 @@ interface getCategoryArtworks {
 };
 
 export type CategoryAction = getCategoryArtworks | getCategory;
+
+export interface CategoryProps {
+    Url: string;
+};

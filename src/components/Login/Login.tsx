@@ -2,15 +2,14 @@ import { Field, Form, Formik } from 'formik';
 import React, { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import { useHeaderAction, useLoginActions } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Login: FC = () => {
     const navigate = useNavigate();
-    const { getUserLogin } = useLoginActions();
+    const { getUserLogin, getAvatar } = useActions();
     const [ unknowError, setUnknowError] = useState('');
     const { userLogin, isAuth } = useTypedSelector(state => state.Login);
-    const { getAvatar } = useHeaderAction();
 
     const validationSchema = yup.object().shape({
         login: yup.string().required('Заполните поле'),

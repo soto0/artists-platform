@@ -1,15 +1,15 @@
 import React, { FC, useEffect } from 'react';
-import { useCategoryAction } from '../../../hooks/useActions';
+import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { CategoryProps } from '../../../types/Category';
 import s from './CategoryTop.module.css';
 
-const CategoryTop: FC = () => {
-    const { getCategory } = useCategoryAction();
-    const { CategoryIcon, CategoryName } = useTypedSelector(state => state.Category)
+const CategoryTop: FC<CategoryProps> = (props) => {
+    const { getCategory } = useActions();
+    const { CategoryIcon, CategoryName } = useTypedSelector(state => state.Category);
 
     useEffect(() => {
-        const url = window.location.pathname.slice(12);
-        getCategory(url);
+        getCategory(props.Url);
     }, []);
 
     return (

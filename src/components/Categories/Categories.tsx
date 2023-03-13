@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react';
 import Category from './Category/Category';
 import s from './Categories.module.css';
-import { useCategoriesAction } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Categories: FC = () => {
-    const { getCategories } = useCategoriesAction();
+    const { getCategories } = useActions();
     const { Categories } = useTypedSelector(state => state.Categories);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Categories: FC = () => {
                     {
                         Categories.map((category: any) => {
                             return (
-                                <Category name={category.categoryTitle} icon={category.categoryIcon} />
+                                <Category Name={category.categoryTitle} Icon={category.categoryIcon} />
                             )
                         })
                     }

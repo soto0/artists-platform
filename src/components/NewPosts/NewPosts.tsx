@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react';
-import { useNewAction } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Post from '../Post/Post';
 import s from './NewPosts.module.css';
 
 const NewPosts: FC = () => {
-    const { getNewPosts } = useNewAction();
+    const { getNewPosts } = useActions();
     const { NewPosts } = useTypedSelector(state => state.New);
 
     useEffect(() => {
@@ -20,7 +20,14 @@ const NewPosts: FC = () => {
                     {
                         NewPosts.map((post: any) => {
                             return (
-                                <Post Avatar={post.avatar} postTitle={post.postTitle} Name={post.login} postDate={post.postDate} id={post.id} postText={post.postText} />
+                                <Post
+                                    Avatar={post.avatar}
+                                    PostTitle={post.postTitle}
+                                    Name={post.login}
+                                    PostDate={post.postDate}
+                                    Id={post.id}
+                                    PostText={post.postText}
+                                />
                             )
                         })
                     }

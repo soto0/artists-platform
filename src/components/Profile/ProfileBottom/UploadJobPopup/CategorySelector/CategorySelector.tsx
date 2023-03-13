@@ -1,17 +1,17 @@
 import React, { FC, useEffect } from 'react';
-import { useCategoriesAction } from '../../../../../hooks/useActions';
+import { useActions } from '../../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import s from './CategorySelector.module.css';
 
 interface CategorySelectorProps {
-    categorySelectorActive: boolean;
-    setCategorySelectorActive: any;
-    category: string | undefined;
-    setCategory: any;
-}
+    CategorySelectorActive: boolean;
+    SetCategorySelectorActive: any;
+    Category: string | undefined;
+    SetCategory: any;
+};
 
 const CategorySelector: FC<CategorySelectorProps>= (props) => {
-    const { getCategories } = useCategoriesAction();
+    const { getCategories } = useActions();
     const { Categories } = useTypedSelector(state => state.Categories);
 
     useEffect(() => {
@@ -19,19 +19,19 @@ const CategorySelector: FC<CategorySelectorProps>= (props) => {
     }, []);
 
     const onClickCategories = () => {
-        props.setCategorySelectorActive(!props.categorySelectorActive);
+        props.SetCategorySelectorActive(!props.CategorySelectorActive);
     };
 
     const onClickCategory = async (event: any) => {
-        props.setCategory(event.currentTarget.innerText);
+        props.SetCategory(event.currentTarget.innerText);
 
-        props.setCategorySelectorActive(!props.categorySelectorActive);
+        props.SetCategorySelectorActive(!props.CategorySelectorActive);
     };
 
     return (
         <div>
-            <p className={s.category} onClick={onClickCategories}>{props.category ? props.category : 'Не выбрана'}</p>
-            <div className={props.categorySelectorActive ? s.selector : s.selector_active}>
+            <p className={s.category} onClick={onClickCategories}>{props.Category ? props.Category : 'Не выбрана'}</p>
+            <div className={props.CategorySelectorActive ? s.selector : s.selector_active}>
                 {
                     Categories.map((category: any) => {
                         return (

@@ -6,23 +6,23 @@ import profileLargeIcon from './../../../assets/images/profileLarge.jpg';
 import changeSmallIcon from './../../../assets/images/change_small_icon.svg';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import LargePhotoPopup from './LargePhotoPopup/LargePhotoPopup';
-import { useProfileAction } from '../../../hooks/useActions';
+import { useActions } from '../../../hooks/useActions';
 import AvatarPopup from './AvatarPopup/AvatarPopup';
 
 const ProfileTop: FC = () => {
     const { FavoritesStatistic, SubscriptionsStatistic } = useTypedSelector(state => state.Profile);
     const [popupLargePhotoActive, setPopupLargePhotoActive] = useState(true);
     const [avatarPopupActive, setAvatarPopupActive] = useState(true);
-    const { getProfileData } = useProfileAction();
+    const { getProfileData } = useActions();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { LargePhoto, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
-    let onClickAvatarPopup = () => {
+    const onClickAvatarPopup = () => {
         setAvatarPopupActive(!avatarPopupActive);
     };
 
-    let onClickLargePhotoPopup = () => {
+    const onClickLargePhotoPopup = () => {
         setPopupLargePhotoActive(!popupLargePhotoActive);
     };
 
@@ -71,21 +71,21 @@ const ProfileTop: FC = () => {
                 </div>
             </div>
             <LargePhotoPopup 
-                popupActive={popupLargePhotoActive} 
-                getProfileData={getProfileData} 
+                PopupActive={popupLargePhotoActive} 
+                GetProfileData={getProfileData} 
                 Avatar={Avatar} 
-                userLogin={userLogin} 
-                setPopupActive={setPopupLargePhotoActive}
+                UserLogin={userLogin} 
+                SetPopupActive={setPopupLargePhotoActive}
                 Country={Country}
                 Gender={Gender}
                 Bio={Bio}
             />
             <AvatarPopup 
-                popupActive={avatarPopupActive} 
+                PopupActive={avatarPopupActive} 
                 LargePhoto={LargePhoto} 
-                getProfileData={getProfileData} 
-                userLogin={userLogin} 
-                setPopupActive={setAvatarPopupActive} 
+                GetProfileData={getProfileData} 
+                UserLogin={userLogin} 
+                SetPopupActive={setAvatarPopupActive} 
                 Country={Country}
                 Gender={Gender}
                 Bio={Bio}

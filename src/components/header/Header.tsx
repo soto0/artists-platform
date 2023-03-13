@@ -13,12 +13,12 @@ const Header: FC = () => {
     const { Avatar } = useTypedSelector(state => state.Header);
 
 
-    let onClickBurger = () => {
+    const onClickBurger = () => {
         setMenuActive(!menuActive);
         setProfileMenuActive(true);
     };
 
-    let onClickProfile = () => {
+    const onClickProfile = () => {
         setProfileMenuActive(!profileMenuActive);
         setMenuActive(true);
     };
@@ -56,17 +56,17 @@ const Header: FC = () => {
                     </nav>
                     {
                         isAuth ?
-                            <div className={s.profile}>
-                                <div className={s.profile__top} onClick={onClickProfile}>
-                                    <p className={s.profile__name}>{userLogin}</p>
-                                    <img src={Avatar ? Avatar : avatar} alt={'avatar-icon'} className={s.profile__icon} />
-                                </div>
-                                <ProfileMenu profileMenuActive={profileMenuActive} userLogin={userLogin} Avatar={Avatar} />
-                            </div> :
-                            <div className={menuActive ? s.login__block : s.login__block_active}>
-                                <Link to={'/Login'} className={s.login}>Войти</Link>
-                                <Link to={'/Registration'} className={s.registration}>Зарегистрироваться</Link>
+                        <div className={s.profile}>
+                            <div className={s.profile__top} onClick={onClickProfile}>
+                                <p className={s.profile__name}>{userLogin}</p>
+                                <img src={Avatar ? Avatar : avatar} alt={'avatar-icon'} className={s.profile__icon} />
                             </div>
+                            <ProfileMenu ProfileMenuActive={profileMenuActive} UserLogin={userLogin} Avatar={Avatar} />
+                        </div> :
+                        <div className={menuActive ? s.login__block : s.login__block_active}>
+                            <Link to={'/Login'} className={s.login}>Войти</Link>
+                            <Link to={'/Registration'} className={s.registration}>Зарегистрироваться</Link>
+                        </div>
                     }
                 </div>
             </div>

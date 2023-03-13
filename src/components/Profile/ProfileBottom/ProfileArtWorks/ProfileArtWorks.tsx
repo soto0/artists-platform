@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useProfileAction } from '../../../../hooks/useActions';
+import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import Artwork from '../../../ArtworkSmall/ArtworkSmall';
 import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
@@ -8,8 +8,8 @@ import s from './ProfileArtWorks.module.css';
 const ProfileArtWorks: FC = () => {
     const { Artworks, Avatar } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
-    const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
-    const { getArtworks } = useProfileAction();
+    const [ArtworkPopupActive, setArtworkPopupActive] = useState(true);
+    const { getArtworks } = useActions();
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
     let onClickAddArtwork = () => {
@@ -26,20 +26,27 @@ const ProfileArtWorks: FC = () => {
                 <h3>Работы</h3>
                 {
                     userLogin !== loginProfile ?
-                    undefined :
-                    <button className={s.add__artwork} onClick={onClickAddArtwork}>Добавить работу</button> 
+                        undefined :
+                        <button className={s.add__artwork} onClick={onClickAddArtwork}>Добавить работу</button>
                 }
             </div>
             <div className={s.artworks__block}>
                 {
                     Artworks?.map((artwork: any) => {
                         return (
-                            <Artwork id={artwork.id} name={loginProfile} key={userLogin} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
+                            <Artwork
+                                Id={artwork.id}
+                                Name={loginProfile}
+                                key={userLogin}
+                                Avatar={Avatar}
+                                ArtworkName={artwork.artworkName}
+                                ArtworkImage={artwork.artworkImage}
+                            />
                         )
                     })
                 }
             </div>
-            <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} setArtworkPopupActive={setArtworkPopupActive} />
+            <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} SetArtworkPopupActive={setArtworkPopupActive} />
         </div>
     );
 };

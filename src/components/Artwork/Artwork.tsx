@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import s from './Artwork.module.css';
 import comment from './../../assets/images/comment.svg';
-import { useArtworkAction, useFavoriteAction, useLikeAction, useSubscriptionsAction } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Avatar from './../../assets/images/avatar.svg';
 import Comments from '../Comments/Comments';
@@ -11,10 +11,7 @@ import FollowToggle from './../FollowToggle/FollowToggle';
 import { Link } from 'react-router-dom';
 
 const Artwork: FC = () => {
-    const { getArtwork } = useArtworkAction();
-    const { getFavoriteArtwork, getFavoriteArtworkCount } = useFavoriteAction();
-    const { getSubscription } = useSubscriptionsAction();
-    const { getLikeArtwork, getLikeArtworkCount } = useLikeAction();
+    const { getArtwork, getFavoriteArtwork, getFavoriteArtworkCount, getSubscription, getLikeArtwork, getLikeArtworkCount } = useActions();
     const ArtworkId = window.location.pathname.slice(9);
     const { Artwork } = useTypedSelector(state => state.Artwork);
     const { userLogin } = useTypedSelector(state => state.Login);
@@ -67,7 +64,7 @@ const Artwork: FC = () => {
                         {userLogin === Artwork.login ? undefined : <FollowToggle UserLogin={userLogin} Item={Artwork} User={Artwork.login} GetSubscription={getSubscription} />}
                     </div>
                     <div className={s.comments__block} id={'comments'} >
-                        <Comments userLogin={userLogin} commentId={Artwork.id} dataName={'ArtworkComments'} comments={ArtworkComments} />
+                        <Comments UserLogin={userLogin} CommentId={Artwork.id} DataName={'ArtworkComments'} Comments={ArtworkComments} />
                     </div>
                 </div>
             </div>

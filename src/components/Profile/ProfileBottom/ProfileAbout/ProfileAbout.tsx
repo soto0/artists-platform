@@ -1,8 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import s from './ProfileAbout.module.css';
-import avatar from './../../../../assets/images/avatar.svg';
-import { Link } from 'react-router-dom';
-import { useProfileAction } from '../../../../hooks/useActions';
+import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import CountrySelector from './CountrySelector/CountrySelector';
 import GenderSelector from './GenderSelector/GenderSelector';
@@ -15,7 +13,7 @@ const ProfileAbout: FC = () => {
     const { Country, Gender, Login} = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
-    const { getCountries, getStatistic } = useProfileAction();
+    const { getCountries, getStatistic } = useActions();
 
     useEffect(() => {
         getCountries();
@@ -34,23 +32,23 @@ const ProfileAbout: FC = () => {
                     <div className={s.user__info}>
                         {
                             userLogin !== loginProfile ?
-                                <p className={s.address__text}>{Country ? Country : 'Не выбран'}</p> :
-                                <CountrySelector
-                                    countrySelectorActive={countrySelectorActive}
-                                    setCountrySelectorActive={setCountrySelectorActive}
-                                    setGenderSelectorActive={setGenderSelectorActive}
-                                    genderSelectorActive={genderSelectorActive}
-                                />
+                            <p className={s.address__text}>{Country ? Country : 'Не выбран'}</p> :
+                            <CountrySelector
+                                CountrySelectorActive={countrySelectorActive}
+                                SetCountrySelectorActive={setCountrySelectorActive}
+                                SetGenderSelectorActive={setGenderSelectorActive}
+                                GenderSelectorActive={genderSelectorActive}
+                            />
                         }
                         {
                             userLogin !== loginProfile ?
                             <p className={s.gender__text}>{Gender ? Gender : 'Не выбран'}</p> :
-                                <GenderSelector 
-                                    genderSelectorActive={genderSelectorActive} 
-                                    countrySelectorActive={countrySelectorActive} 
-                                    setGenderSelectorActive={setGenderSelectorActive} 
-                                    setCountrySelectorActive={setCountrySelectorActive} 
-                                />
+                            <GenderSelector 
+                                GenderSelectorActive={genderSelectorActive} 
+                                CountrySelectorActive={countrySelectorActive} 
+                                SetGenderSelectorActive={setGenderSelectorActive} 
+                                SetCountrySelectorActive={setCountrySelectorActive} 
+                            />
                         }
                     </div>
                     <div className={s.user__bio}>

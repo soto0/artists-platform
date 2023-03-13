@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react';
-import { useUsersAction } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import User from '../User/User';
 import s from './Users.module.css';
 
 const Users: FC = () => {
-    const { getUsers } = useUsersAction();
+    const { getUsers } = useActions();
     const { Users } = useTypedSelector(state => state.Users);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Users: FC = () => {
                     {
                         Users?.map((user: any) => {
                             return (
-                                <User avatar={user.avatar} name={user.login} />
+                                <User Avatar={user.avatar} Name={user.login} />
                             )
                         })
                     }

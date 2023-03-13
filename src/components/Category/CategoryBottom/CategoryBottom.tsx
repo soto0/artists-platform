@@ -1,26 +1,30 @@
 import React, { FC, useEffect } from 'react';
-import { useCategoryAction } from '../../../hooks/useActions';
+import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { CategoryProps } from '../../../types/Category';
 import ArtworkSmall from '../../ArtworkSmall/ArtworkSmall';
 import s from './CategoryBottom.module.css';
 
-const CategoryBottom: FC = () => {
-    const { getArtworksCategory } = useCategoryAction();
+const CategoryBottom: FC<CategoryProps> = (props) => {
+    const { getArtworksCategory } = useActions();
     const { Artworks } = useTypedSelector(state => state.Category);
 
     useEffect(() => {
-        const url = window.location.pathname.slice(12);
-        getArtworksCategory(url);
-    }, [])
-
-    console.log(Artworks)
+        getArtworksCategory(props.Url);
+    }, []);
 
     return (
        <div className={s.artworks_block}>
             {
                 Artworks.map((artwork: any) => {
                     return (
-                        <ArtworkSmall name={artwork.login} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} avatar={artwork.avatar} id={artwork.id} />
+                        <ArtworkSmall 
+                            Name={artwork.login} 
+                            ArtworkName={artwork.artworkName} 
+                            ArtworkImage={artwork.artworkImage}
+                            Avatar={artwork.avatar} 
+                            Id={artwork.id} 
+                        />
                     )
                 })
             }

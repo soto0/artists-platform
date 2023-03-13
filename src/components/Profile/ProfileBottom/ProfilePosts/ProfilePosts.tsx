@@ -6,19 +6,18 @@ import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 import * as yup from 'yup';
-import { useProfileAction } from '../../../../hooks/useActions';
-
+import { useActions } from '../../../../hooks/useActions';
 
 type Date = {
     weekday: any;
     month: any;
     day: any;
-}
+};
 
 const ProfilePosts: FC = () => {
     const { Avatar, Posts } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
-    const { getPosts } = useProfileAction();
+    const { getPosts } = useActions();
     const loginProfile = window.location.pathname.split('/').slice(2, 3).join('/');
 
 
@@ -35,20 +34,25 @@ const ProfilePosts: FC = () => {
         <div className={s.posts__block}>
             {
                 userLogin !== loginProfile ?
-                    undefined :
-                    <Formik
-                        initialValues={{ postTitle: '', postText: '' }}
-                        validationSchema={validationSchema}
-                        onSubmit={async (values, { resetForm }) => {
-                            const today = new Date();
+                undefined :
+                <Formik
+                    initialValues={{ postTitle: '', postText: '' }}
+                    validationSchema={validationSchema}
+                    onSubmit={async (values, { resetForm }) => {
+                        const today = new Date();
+                        const options: Date = { weekday: "long", month: "long", day: "numeric" };
+                        const now = today.toLocaleString('ru-Ru', options);
 
-                            const options: Date = { weekday: "long", month: "long", day: "numeric" };
-
-                            const now = today.toLocaleString('ru-Ru', options);
-
-                            await axios.post('http://localhost:3001/Posts',
-                                { postTitle: values.postTitle, login: userLogin, postDate: now, postText: values.postText, avatar: Avatar, profile: loginProfile },
-                                { withCredentials: true });
+                        await axios.post('http://localhost:3001/Posts',
+                            { 
+                                postTitle: values.postTitle, 
+                                login: userLogin, 
+                                postDate: now, 
+                                postText: values.postText, 
+                                avatar: Avatar, 
+                                profile: loginProfile 
+                            },
+                            { withCredentials: true });
 
                             getPosts(userLogin);
                             resetForm();
@@ -76,7 +80,14 @@ const ProfilePosts: FC = () => {
                 {
                     Posts?.map((post: any) => {
                         return (
-                            <Post Avatar={post.avatar} Name={post.profile} id={post.id} postDate={post.postDate} postTitle={post.postTitle} postText={post.postText} />
+                            <Post 
+                                Avatar={post.avatar} 
+                                Name={post.profile} 
+                                Id={post.id} 
+                                PostDate={post.postDate} 
+                                PostTitle={post.postTitle} 
+                                PostText={post.postText} 
+                            />
                         )
                     })
                 }

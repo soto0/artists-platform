@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import React, { FC, useState } from 'react';
 import * as yup from 'yup';
-import { useProfileAction } from '../../../../hooks/useActions';
+import { useActions } from '../../../../hooks/useActions';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import upload from './../../../../assets/images/upload.svg';
 import CategorySelector from './CategorySelector/CategorySelector';
@@ -10,15 +10,15 @@ import CategorySelector from './CategorySelector/CategorySelector';
 
 interface UploadJobPopupProps {
     ArtworkPopupActive: boolean;
-    setArtworkPopupActive: any;
-}
+    SetArtworkPopupActive: any;
+};
 
 const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
     const [artworkUrl, setArtworkUrl] = useState<any>();
     const [artworkImage, setArtworkImage] = useState<any>();
     const { userLogin } = useTypedSelector(state => state.Login);
     const { Avatar } = useTypedSelector(state => state.Profile);
-    const { getArtworks } = useProfileAction();
+    const { getArtworks } = useActions();
     const [ category, setCategory ] = useState();
     const [ categorySelectorActive, setCategorySelectorActive ] = useState(true);
     const loginProfile = window.location.pathname.slice(9);
@@ -48,12 +48,19 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                 onSubmit={async values => {
                     if (artworkUrl) {
                         await axios.post(`http://localhost:3001/Artworks`,
-                            { login: userLogin, artworkName: values.artwork_name, artworkImage: artworkUrl, category: category, avatar: Avatar, profile: loginProfile },
+                            { 
+                                login: userLogin, 
+                                artworkName: values.artwork_name, 
+                                artworkImage: artworkUrl, 
+                                category: category, 
+                                avatar: Avatar, 
+                                profile: loginProfile 
+                            },
                             { withCredentials: true });
                     };
 
                     getArtworks(userLogin);
-                    props.setArtworkPopupActive(true);
+                    props.SetArtworkPopupActive(true);
                 }}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid }) => (
@@ -63,7 +70,12 @@ const UploadJobPopup: FC<UploadJobPopupProps> = (props) => {
                             <Field type={'text'} name={'artwork_name'} onChange={handleChange} onBlur={handleBlur} value={values.artwork_name} className={'artwork__name'} />
                             {touched.artwork_name && errors.artwork_name && <p className={'error'}>Заполните поле</p>}
                         </div>
-                        <CategorySelector categorySelectorActive={categorySelectorActive} setCategorySelectorActive={setCategorySelectorActive} category={category} setCategory={setCategory} />
+                        <CategorySelector 
+                            CategorySelectorActive={categorySelectorActive} 
+                            SetCategorySelectorActive={setCategorySelectorActive} 
+                            Category={category} 
+                            SetCategory={setCategory} 
+                        />
                         <label htmlFor={'add_artwork'} className={'change__icon_block'}>
                             <img src={upload} alt={'upload'} className={'upload__icon'} />
                             <p className={'add__icon_text'}>Добавьте работу</p>

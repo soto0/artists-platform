@@ -72,14 +72,14 @@ interface getFavorites {
 export type ProfileAction = getProfileData | getArtworks | getComments | getCountries | getPosts | getStatistic | getFavorites;
 
 export interface PopupProps {
-    popupActive: boolean;
-    setPopupActive: any;
+    PopupActive: boolean;
+    SetPopupActive: any;
     LargePhoto?: string | undefined;
-    userLogin: string | undefined;
+    UserLogin: string | undefined;
     Avatar?: string | undefined;
-    getProfileData: any;
+    GetProfileData: any;
     Country: string | undefined;
     Gender: string | undefined;
     Bio: string | undefined;
-    login?: string | undefined;
+    Login?: string | undefined;
 };

@@ -2,16 +2,16 @@ import React, { FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import s from './ProfileMenu.module.css';
 import avatar from './../../../assets/images/avatar.svg';
-import { useLoginActions } from '../../../hooks/useActions';
+import { useActions } from '../../../hooks/useActions';
 
 interface ProfileMenuProps {
-    userLogin: any,
-    profileMenuActive: boolean,
+    UserLogin: any,
+    ProfileMenuActive: boolean,
     Avatar: string
 };
 
 const ProfileMenu: FC<ProfileMenuProps> = (props) => {
-    const { getExitLogin } = useLoginActions();
+    const { getExitLogin } = useActions();
     const navigate = useNavigate();
 
     const exit = () => {
@@ -20,11 +20,11 @@ const ProfileMenu: FC<ProfileMenuProps> = (props) => {
     };
 
     return (
-        <div className={props.profileMenuActive ? s.profile__menu : s.profile__menu_active}>
-            <Link to={'/Profile/' + props.userLogin} className={s.profile__menu_top}>
+        <div className={props.ProfileMenuActive ? s.profile__menu : s.profile__menu_active}>
+            <Link to={'/Profile/' + props.UserLogin} className={s.profile__menu_top}>
                 <img src={props.Avatar ? props.Avatar : avatar} alt={'avatar-icon'} className={s.profile__menu_avatar} />
                 <div className={s.profile__menu_text}>
-                    <p className={s.profile__menu_name}>{props.userLogin}</p>
+                    <p className={s.profile__menu_name}>{props.UserLogin}</p>
                 </div>
             </Link>
             <ul className={s.profile__menu_list}>

@@ -20,7 +20,7 @@ const AvatarPopup: FC<PopupProps> = (props) => {
     };
 
     return (
-        <div className={props.popupActive ? 'popup' : 'popup_active'}>
+        <div className={props.PopupActive ? 'popup' : 'popup_active'}>
             <div className={'popup__top'}>
                 <h2 className={'title'}>Добавьте аватар</h2>
             </div>
@@ -28,13 +28,21 @@ const AvatarPopup: FC<PopupProps> = (props) => {
                 initialValues={{ avatar: '' }}
                 onSubmit={async values => {
                     if (avatarUrl) {
-                        await axios.put('http://localhost:3001/Profile/' + props.userLogin,
-                            { id: props.userLogin, login: props.userLogin, largePhoto: props.LargePhoto, avatar: avatarUrl, country: props.Country, gender: props.Gender, bio: props.Bio },
+                        await axios.put('http://localhost:3001/Profile/' + props.UserLogin,
+                            { 
+                                id: props.UserLogin, 
+                                login: props.UserLogin, 
+                                largePhoto: props.LargePhoto,
+                                avatar: avatarUrl, 
+                                country: props.Country, 
+                                gender: props.Gender, 
+                                bio: props.Bio 
+                            },
                             { withCredentials: true });
                     };
 
-                    props.getProfileData(props.userLogin);
-                    props.setPopupActive(true);
+                    props.GetProfileData(props.UserLogin);
+                    props.SetPopupActive(true);
                 }}
             >
                 {({ isValid }) => (

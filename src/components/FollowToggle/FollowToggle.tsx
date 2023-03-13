@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProfileAction } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import s from './FollowToggle.module.css';
 
@@ -15,7 +15,7 @@ interface FollowProps {
 
 const FollowToggle: FC<FollowProps> = (props) => {
     const { Subscriptions } = useTypedSelector(state => state.Subscriptions);
-    const { getStatistic } = useProfileAction();
+    const { getStatistic } = useActions();
     const navigate = useNavigate();
 
     const FollowToggle = async () => {
@@ -39,7 +39,8 @@ const FollowToggle: FC<FollowProps> = (props) => {
         <div className={s.button__block}>
             {
                 props.UserLogin !== props.Item ?
-                <button className={s.follow} onClick={FollowToggle}>{Subscriptions?.follow ? 'Не отслеживать' : 'Отслеживать'}</button> : undefined
+                <button className={s.follow} onClick={FollowToggle}>{Subscriptions?.follow ? 'Не отслеживать' : 'Отслеживать'}</button>
+                : undefined
             }
         </div>
     );

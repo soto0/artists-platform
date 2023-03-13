@@ -5,21 +5,21 @@ import UploadJobPopup from '../UploadJobPopup/UploadJobPopup';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import ArtworkSmall from '../../../ArtworkSmall/ArtworkSmall';
 import Comments from './Comments/Commets';
-import { useProfileAction } from '../../../../hooks/useActions';
+import { useActions } from '../../../../hooks/useActions';
 
 const ProfileMain: FC = () => {
     const { Artworks, Avatar, Country, Gender, Bio, Login } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
     const [ ArtworkPopupActive, setArtworkPopupActive ] = useState(true);
     const loginProfile = window.location.pathname.slice(9);
-    const { getComments, getArtworks } = useProfileAction();
+    const { getComments, getArtworks } = useActions();
 
     useEffect(() => {
         getArtworks(loginProfile);
         getComments(loginProfile);
     }, []);
 
-    let onClickAddArtwork = () => {
+    const onClickAddArtwork = () => {
         setArtworkPopupActive(!ArtworkPopupActive);
     };
 
@@ -30,25 +30,32 @@ const ProfileMain: FC = () => {
                     <h3>Работы</h3>
                     {
                         Artworks?.length !== 0 ?
-                            <div className={s.artworks__block}>
-                                {
-                                    Artworks?.map((artwork: any) => {
-                                        return (
-                                            <ArtworkSmall name={loginProfile} key={userLogin} id={artwork.id} avatar={Avatar} artworkName={artwork.artworkName} artworkImage={artwork.artworkImage} />
-                                        )
-                                    })
-                                }
+                        <div className={s.artworks__block}>
+                            {
+                                Artworks?.map((artwork: any) => {
+                                    return (
+                                        <ArtworkSmall 
+                                            Name={loginProfile} 
+                                            key={userLogin} 
+                                            Id={artwork.id} 
+                                            Avatar={Avatar} 
+                                            ArtworkName={artwork.artworkName} 
+                                            ArtworkImage={artwork.artworkImage} 
+                                        />
+                                    )
+                                })
+                            }
                             </div>
                             :
                             userLogin !== loginProfile ?
-                                undefined :
-                                <div className={s.upload__artworks}>
-                                    <img src={upload} alt={'upload__artwork'} className={s.upload__artworks_icon} />
-                                    <p className={s.upload__artwork_text}>Загрузить первую работу</p>
-                                    <button className={s.upload__artwork_button} onClick={onClickAddArtwork}>Загрузить</button>
-                                    <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} setArtworkPopupActive={setArtworkPopupActive} />
-                                    <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>
-                                </div>
+                            undefined :
+                            <div className={s.upload__artworks}>
+                                <img src={upload} alt={'upload__artwork'} className={s.upload__artworks_icon} />
+                                <p className={s.upload__artwork_text}>Загрузить первую работу</p>
+                                <button className={s.upload__artwork_button} onClick={onClickAddArtwork}>Загрузить</button>
+                                <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} SetArtworkPopupActive={setArtworkPopupActive} />
+                                <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>
+                            </div>
                     }
                 </div>
                 <div className={s.about}>

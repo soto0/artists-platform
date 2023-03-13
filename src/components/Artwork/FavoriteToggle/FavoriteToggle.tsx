@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { FC } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import s from './../Artwork.module.css';
@@ -10,7 +10,7 @@ interface FavoriteProps {
     Artwork: any,
     GetFavoriteArtwork: any,
     GetFavoriteArtworkCount: any
-}
+};
 
 const FavoriteToggle: FC<FavoriteProps> = (props) => {
     const { FavoriteArtwork, FavoriteArtworkCount } = useTypedSelector(state => state.Favorite);

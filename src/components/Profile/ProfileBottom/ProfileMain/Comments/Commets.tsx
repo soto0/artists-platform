@@ -3,7 +3,7 @@ import s from './Comments.module.css';
 import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
-import { useProfileAction } from '../../../../../hooks/useActions';
+import { useActions } from '../../../../../hooks/useActions';
 import Avatar from './../../../../../assets/images/avatar.svg';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ type Date = {
 
 const Comments: FC<CommentsProps> = (props) => {
     const { Comments } = useTypedSelector(state => state.Profile);
-    const { getComments } = useProfileAction();
+    const { getComments } = useActions();
     const loginProfile = window.location.pathname.slice(2);
     const navigate = useNavigate();
     

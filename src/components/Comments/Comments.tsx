@@ -3,31 +3,29 @@ import s from './Comments.module.css';
 import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useArtworkAction, usePostAction } from '../../hooks/useActions';
 import { useNavigate } from 'react-router-dom';
 import UnknownAvatar from './../../assets/images/avatar.svg';
+import { useActions } from '../../hooks/useActions';
 
 interface CommentsProps {
-    userLogin: string | undefined;
-    commentId: number;
-    dataName: string | undefined;
-    comments: [],
-}
+    UserLogin: string | undefined;
+    CommentId: number;
+    DataName: string | undefined;
+    Comments: [],
+};
 
-type Date = { 
+type Date = {
     weekday: any;
     month: any;
     day: any;
-}
+};
 
 const Comments: FC<CommentsProps> = (props) => {
-    const { getArtwork } = useArtworkAction();
-    const { getPost } = usePostAction();
+    const { getArtwork, getPost } = useActions();
     const navigate = useNavigate();
     const { Avatar } = useTypedSelector(state => state.Profile);
     const { userLogin } = useTypedSelector(state => state.Login);
 
-    
     return (
         <div className={s.comments}>
             <Formik
@@ -40,29 +38,30 @@ const Comments: FC<CommentsProps> = (props) => {
                         const options: Date = { weekday: "long", month: "long", day: "numeric" };
                         const now = today.toLocaleString('ru-Ru', options);
 
-                        await axios.post('http://localhost:3001/' + props.dataName,
-                            { commentText: values.comment, avatar: Avatar, commentDate: now, artworkId: props.commentId, login: userLogin },
+                        await axios.post('http://localhost:3001/' + props.DataName,
+                            { commentText: values.comment, avatar: Avatar, commentDate: now, artworkId: props.CommentId, login: userLogin },
                             { withCredentials: true });
 
-                        if (props.dataName === 'ArtworkComments') {
-                            getArtwork(props.commentId);
-                        } else if (props.dataName === 'PostComments') {
+                        if (props.DataName === 'ArtworkComments') {
+                            getArtwork(props.CommentId);
+                        } else if (props.DataName === 'PostComments') {
                             getPost();
                         };
+
                         resetForm();
                     }
                 }}
             >
                 {({ values, isValid, handleBlur, handleChange }) => (
                     <Form>
-                        <Field as={'textarea'} name={'comment'} value={values.comment} onChange={handleChange} onBlur={handleBlur}  className={s.comments__text}></Field>
+                        <Field as={'textarea'} name={'comment'} value={values.comment} onChange={handleChange} onBlur={handleBlur} className={s.comments__text}></Field>
                         <button className={s.submit__comment} type={'submit'} disabled={!isValid} >Отправить комментарий</button>
                     </Form>
                 )}
             </Formik>
             <div className={s.comments}>
                 {
-                    props.comments.filter((comment: any) => comment.artworkId === props.commentId).map((comment: any) => {
+                    props.Comments.filter((comment: any) => comment.artworkId === props.CommentId).map((comment: any) => {
                         return (
                             <div className={s.comment}>
                                 <img src={comment.avatar ? comment.avatar : UnknownAvatar} className={s.comment__avatar} />
