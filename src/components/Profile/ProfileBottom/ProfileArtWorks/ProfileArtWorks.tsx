@@ -46,6 +46,7 @@ const ProfileArtWorks: FC = () => {
                     })
                 }
             </div>
+            <div onClick={onClickAddArtwork} className={ArtworkPopupActive ? s.popup__back : s.popup__back_active}></div>
             <UploadJobPopup ArtworkPopupActive={ArtworkPopupActive} SetArtworkPopupActive={setArtworkPopupActive} />
         </div>
     );
